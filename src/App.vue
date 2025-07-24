@@ -8,28 +8,33 @@ export default {
   components: {
     Header,
     Main,
-    Footer,
+    // Footer,
   }
 }
 
 </script>
 
 <template>
-    <div>
-      
-      <el-container>
-        <el-header><Header/></el-header>
-        <el-main><Main/></el-main>
-        <el-footer><Footer/></el-footer>
-      </el-container>
-      
-      <!-- 回到顶部 -->
-      <el-backtop :right="40" :bottom="80" />
-    </div>
+  <div>
+
+    <el-container>
+      <el-header>
+        <Header />
+      </el-header>
+      <el-main>
+        <Main />
+      </el-main>
+      <el-footer>
+        <Footer />
+      </el-footer>
+    </el-container>
+
+    <!-- 回到顶部 -->
+    <el-backtop :right="40" :bottom="80" />
+  </div>
 </template>
 
 <style>
-
 h1 {
   font-family: "MyFont", Verdana, sans-serif;
   letter-spacing: 2px;
@@ -38,7 +43,11 @@ h1 {
   text-align: center;
 }
 
-h2, h3, h4, h5, h6 {
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "MyFont", Verdana, sans-serif;
   letter-spacing: 2px;
 }
@@ -51,9 +60,15 @@ h2, h3, h4, h5, h6 {
   padding: 0px;
 }
 
-p, li {
+p,
+li {
   font-size: 16px;
   line-height: 1.75rem;
+}
+
+.el-main {
+  --el-main-padding: 70px;
+  padding: var(--el-main-padding);
 }
 
 code {
@@ -89,7 +104,7 @@ blockquote {
   background: #f6f6f6;
 }
 
-blockquote > p {
+blockquote>p {
   margin-block-start: 0.5em;
   margin-block-end: 0.5em;
 }
@@ -106,7 +121,7 @@ a:hover {
   border-bottom: dotted;
 }
 
-p > img {
+p>img {
   width: 80%;
   display: block;
   margin: 0 auto;
@@ -119,8 +134,8 @@ table {
   width: max-content;
   max-width: 100%;
   margin: 0 auto;
-  display:block;
-  overflow-x:auto;
+  display: block;
+  overflow-x: auto;
 }
 
 thead {
@@ -141,14 +156,14 @@ tbody tr:last-child {
   border-color: rgb(0 0 0);
 }
 
-th, td {
-    padding-left: 1rem;
-    padding-right: 1rem;
+th,
+td {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .katex-display {
   overflow-x: auto;
   overflow-y: hidden;
 }
-
 </style>

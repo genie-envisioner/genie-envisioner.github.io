@@ -3,153 +3,112 @@
 import { ElIcon } from 'element-plus'
 import { Document, Files, MagicStick, Picture, DataAnalysis, Film } from '@element-plus/icons-vue'
 
-// logo地址，没有则置为""即可
-const logo = './logo.png'
+const logo = './AgiBot.jpg'
 
-// 标题
-const title = 'Academic Project Page Template'
+const title = 'Genie Envisioner'
 
-// 标题颜色
 const title_color = '#000000'
 
-// 标题补充，没有则置为''即可
-const title_supp = ' (Vue based)'
+const title_supp = 'A Unified World Foundation Model for Robotic Manipulation'
 
-// 标题补充颜色
-const title_supp_color = '#42B883'
+const title_supp_color = '#444444'
 
-// 按钮颜色
 const btn_color = '#444444'
 
-// 作者清单（包含作者姓名、头像、主页、地址序号）
+// homepage: "https://junyaohu.github.io/",
 const authors = [
-  {
-    name: "Your Name",
-    icon: "./icon/junyaohu.jpg",
-    homepage: "https://junyaohu.github.io/",
-    address_flag: "1,#"
-  },
-  {
-    name: "Anya Forger",
-    icon: "./icon/anya.jpg",
-    homepage: "https://www.bilibili.com/video/BV1jv4y1P7Bb",
-    address_flag: "2,#"
-  },
-  {
-    name: "BugCat Capoo",
-    icon: "./icon/capoo.webp",
-    homepage: "https://zh.moegirl.org.cn/%E7%8C%AB%E7%8C%AB%E8%99%AB%E5%92%96%E6%B3%A2",
-    address_flag: "1,*"
-  },
-]
+  { name: "Yue Liao", address_flag: "*" },
+  { name: "Pengfei Zhou", address_flag: "*" },
+  { name: "Siyuan Huang", address_flag: "*" },
+  { name: "Donglin Yang", address_flag: "" },
+  { name: "Shengcong Chen", address_flag: "" },
+  { name: "Yuxin Jiang", address_flag: "", },
+  { name: "Yue Hu", address_flag: "", },
+  { name: "Jingbin Cai", address_flag: "", },
+  { name: "Si Liu", address_flag: "", },
+  { name: "Liliang Chen", address_flag: "†", },
+  { name: "Shuicheng Yan", address_flag: "◆", },
+  { name: "Maoqing Yao", address_flag: "◆", },
+  { name: "Guanghui Ren", address_flag: "†◆", },
+];
 
 // 地址清单（包含地址名称、头像、主页、地址序号）
 const addresses = [
   {
-    address_flag: "1",
-    name: "Home University",
-    icon: "./icon/home.png",
-    homepage: "https://github.com/hmuniversity"
+    // address_flag: "1",
+    name: "AgiBot",
+    homepage: "https://www.agibot.com/"
   },
   {
-    address_flag: "2",
-    name: "IKUN University",
-    icon: "./icon/ikun.avif",
-    homepage: "https://www.bilibili.com/video/BV178411Y7QB"
+    // address_flag: "2",
+    name: "NUS LV-Lab",
+    // homepage: "https://"
+  },
+  {
+    // address_flag: "3",
+    name: "BUAA",
   },
 ]
 
-// 共一和通讯提示
 const con_and_corresponding_author = 
-  "#: Equal Contribution. *: Corresponding Author."
+  "* Equal Contribution. ◆ Corresponding Author. † Project Leader."
 
 // 最新消息
-const news = "🔥 [2024-12-15] This template project is still under development."
+// const news = "🔥 [2024-12-15] This template project is still under development."
 
 // 强调内容
-const emphases = [
-  "🎉 [ABCD 2024] Poster",
-  "🥰 欢迎关注“减论”微信公众号/B站/知乎/小红书",
-  "传递人工智能算法科普教育的减约理解",
-  "提升信息效率及认知维度"
-]
+// const emphases = [
+//   "🎉 [ABCD 2024] Poster",
+//   "🥰 欢迎关注“减论”微信公众号/B站/知乎/小红书",
+//   "传递人工智能算法科普教育的减约理解",
+//   "提升信息效率及认知维度"
+// ]
 
 // 提供引导资料链接
 const buttons = [
   {
-    disabled: true,
+    disabled: false,
     name: "Paper",
-    component: Document,
-  },
-  {
-    disabled: true,
-    name: "中译版",
+    link: "https://arxiv.org/abs/25",
     component: Document,
   },
   {
     disabled: false,
     name: "Code",
-    link: "https://github.com/JunyaoHu/academic-project-page-template-vue",
+    link: "https://github.com/enerverse/enerverse.github.io",
     component: Files,
   },
-  {
-    disabled: false,
-    name: "Demo",
-    link: "https://junyaohu.github.io/academic-project-page-template-vue",
-    component: MagicStick,
-  },
-  {
-    disabled: true,
-    name: "Poster",
-    component: Picture,
-  },
-  {
-    disabled: true,
-    name: "Slide",
-    component: DataAnalysis,
-  },
-  {
-    disabled: false,
-    name: "Video (减论)",
-    link: "https://www.bilibili.com/video/BV15XkgYiE73/",
-    component: Film,
-  },
-  {
-    disabled: false,
-    name: "Video (Tutorial)",
-    link: "https://www.bilibili.com/video/BV1oUrfYzEqZ",
-    component: Film,
-  },
+  // {
+  //   disabled: false,
+  //   name: "Video",
+  //   link: "https://www.bilibili.com/video/BV15XkgYiE73/",
+  //   component: Film,
+  // },
 ]
 
 </script>
 
 <template>
   <div>
-
-    <!-- 最新消息提示 -->
-    <el-row justify="center">
-      <el-col :span="24">
-        <el-alert title="🔥 This template is still under development." type="success" />
-      </el-col>
-    </el-row>
-
     <!-- 文章logo -->
-    <el-row v-if="logo" justify="center">
+    <!-- <el-row v-if="logo" justify="center">
       <el-image :src="logo" class="logo" fit="cover" />
-    </el-row>
+    </el-row> -->
 
     <!-- 文章标题 -->
-    <el-row justify="center">
-      <el-col :span="20">
-        <h1 class="paper-title">
+    <el-row justify="center" >
+      <el-col :span="20" style="text-align: center;" >
+        <h1 class="paper-title" style="margin-bottom: 1%;">
           <span v-if="title" :style="{color:title_color}"> {{ title }}</span>
-          <span v-if="title_supp" :style="{color:title_supp_color}"> {{ title_supp }}</span>
         </h1>
+        <h3 style="margin-top: 0;">
+          <span v-if="title_supp" :style="{color:title_supp_color}"> {{ title_supp }}</span>
+        </h3>
       </el-col>
     </el-row>
 
     <!-- 作者名单 -->
+    <!--
     <el-row justify="center">
       <a :href=author.homepage v-for="author in authors">
         <el-button class="title-button" type="primary" text>
@@ -160,8 +119,9 @@ const buttons = [
         </el-button>
       </a>
     </el-row>
-
+    -->
     <!-- 地址名单 -->
+    <!--
     <el-row justify="center">
       <a :href=address.homepage v-for="address in addresses">
         <el-button class="title-button" type="primary" text>
@@ -173,11 +133,13 @@ const buttons = [
       </a>
     </el-row>
 
+    -->
     <!-- 共一和通讯提示内容 -->
+    <!--
     <el-row justify="center" class="con-cor">
         {{ con_and_corresponding_author }}
     </el-row>
-
+    -->
     <!-- 强调内容 -->
     <el-row justify="center" class="emphasis" v-for="emphasis in emphases">
         {{ emphasis }}
@@ -199,6 +161,17 @@ const buttons = [
       </el-col>
     </el-row>
 
+    <el-row justify="center">
+      <el-col :xs="24" :sm="20" :md="16" :lg="12" :xl="12">
+        <el-container class="video-container">
+          <video controls muted preload playsinline  style="max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 8px;">
+            <source src="/video/agibot-genie-intro.mp4" type="video/mp4">
+          </video>
+          <!-- <el-image src="./carousel/Banner.png" fit="contain" /> -->
+        </el-container>
+      </el-col>
+    </el-row>
+
   </div>
 </template>
 
@@ -211,6 +184,7 @@ const buttons = [
   font-size: 42px;
   margin: 32px;
   text-align: center;
+  margin-top: 2%;
 }
 
 /* 姓名和地址按钮 */
@@ -237,7 +211,7 @@ const buttons = [
 
 /* 姓名上标属性 */
 .name_sup {
-  color: #606266; 
+  color: #000000; 
   margin-left: 3px;
 }
 
@@ -290,10 +264,10 @@ const buttons = [
 }
 
 .logo {
-  width: 150px; 
-  height: 150px;
-  border-radius: 50%;
-  box-shadow: #ced3dc 0px 0px 3px 2px;
+  width: 20%; 
+  height: 15%;
+  /* border-radius: 20%; */
+  /* box-shadow: #ced3dc 0px 0px 3px 2px; */
   margin-top: 40px;
 }
 
