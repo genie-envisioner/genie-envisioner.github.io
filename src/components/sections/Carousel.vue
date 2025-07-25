@@ -77,8 +77,8 @@ export default {
 
   <el-row justify="center">
 
-    <el-col :span="9" style="margin: 10px 5px 0px 0px;" >
-      <div class="double-swiper" style="height: 95%">
+    <div class="left-box">
+      <div class="double-swiper">
       <swiper ref="genie_swiper1" :loop="true" :slidesPerView="1" :modules="modules" :navigation="{
         hideOnClick: true,
       }"
@@ -117,18 +117,10 @@ export default {
       </swiper>
       </div>
       <span class="label">Video Generation</span> 
-    </el-col>
+    </div>
 
-    <el-col :span="9" style="margin: 10px 0px 0px 5px;">
-      <!-- 设置轮播图：循环播放、首张图序号、响应式、导航和分页、自动播放 -->
-      <swiper :loop="true" :slidesPerView="1" :breakpoints="{
-        600: {
-          slidesPerView: 1,
-        },
-        800: {
-          slidesPerView: 1,
-        },
-      }" :modules="modules" :navigation="{
+    <div class="right-box">
+      <swiper :loop="true" :slidesPerView="1" :modules="modules" :navigation="{
         hideOnClick: true,
       }" :pagination="{
           hideOnClick: true,
@@ -144,7 +136,7 @@ export default {
         </swiper-slide>
       </swiper>
       <span class="label">Manipulation</span> 
-    </el-col>
+    </div>
   </el-row>
 
   <el-row justify="center" class="section-title">
@@ -153,8 +145,8 @@ export default {
 
   <el-row justify="center">
 
-    <el-col :span="9" style="margin: 10px 5px 0px 0px;" >
-      <div class="double-swiper" style="height: 95%">
+    <div class="left-box">
+      <div class="double-swiper" style="height: 95%; width: 700px">
       <swiper ref="genie_swiper1" :loop="true" :slidesPerView="1" :modules="modules" :navigation="{
         hideOnClick: true,
       }"
@@ -193,18 +185,9 @@ export default {
       </swiper>
       </div>
       <span class="label">Video Generation</span> 
-    </el-col>
-
-    <el-col :span="9" style="margin: 10px 0px 0px 10px;">
-      <!-- 设置轮播图：循环播放、首张图序号、响应式、导航和分页、自动播放 -->
-      <swiper :loop="true" :slidesPerView="1" :breakpoints="{
-        600: {
-          slidesPerView: 1,
-        },
-        800: {
-          slidesPerView: 1,
-        },
-      }" :modules="modules" :navigation="{
+    </div>
+    <div class="right-box">
+      <swiper :loop="true" :slidesPerView="1" :modules="modules" :navigation="{
         hideOnClick: true,
       }" :pagination="{
           hideOnClick: true,
@@ -220,31 +203,60 @@ export default {
         </swiper-slide>
       </swiper>
       <span class="label">Manipulation</span> 
-    </el-col>
+    </div>
   </el-row>
 </template>
 
 <style>
 /* 设置Swiper风格 */
+
 .swiper {
   --swiper-theme-color: white;
   position: relative;
-  width: 100%;
+  width: 600px;
 }
 .swiper-button-next {
   right: 10px;
 }
+.swiper-manipulation {
+  margin: 0;   
+  padding: 0;
+}
+.left-box {
+  flex: 1;
+  padding: 10px;
+  margin-left: 15%;
+  max-width: 30%;
+  justify-content: right
+}
+.right-box {
+  /* flex: 1; */
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-right: 15%;
+  /* justify-content: left */
+  
+}
+.double-swiper {
+  display: flex;
+  flex-direction: column;
+  height: 95%;
+  width: 700px;
+}
 .slide img {
   width: 100%;
   border-radius: 8px;
+  margin: 0;
   display: block;
-  /* box-shadow: 0 rgba(0,0,0,0.1); */
 }
+.swiper-generation { width: 100%; }
 .section-title {
-  margin: 10px 0;
+  margin: 20px 0;
 }
 .label {
   color: #7e8481;
   font-family: "MyFont", Verdana, sans-serif;
 }
+
 </style>

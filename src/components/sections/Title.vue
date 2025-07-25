@@ -167,7 +167,6 @@ const buttons = [
           <video controls muted preload playsinline  style="max-width: 90%; height: auto; display: block; margin: 0 auto; border-radius: 8px;">
             <source src="/video/agibot-genie-intro.mp4" type="video/mp4">
           </video>
-          <!-- <el-image src="./carousel/Banner.png" fit="contain" /> -->
         </el-container>
       </el-col>
     </el-row>

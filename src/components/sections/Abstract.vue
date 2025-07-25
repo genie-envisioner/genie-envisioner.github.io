@@ -9,6 +9,7 @@ import abstract from '../mds/abstract.mdx';
     <el-row justify="center">
         <el-col :xs="24" :sm="20" :md="16" :lg="12" :xl="12">
             <abstract />
+            <el-image src="./carousel/Banner.png" fit="contain" />
         </el-col>
     </el-row>
 
