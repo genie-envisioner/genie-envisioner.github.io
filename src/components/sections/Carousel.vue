@@ -120,6 +120,7 @@ export default {
       
     </el-col>
 
+
     <el-col :xs="24" :sm="20" :md="16" :lg="12" :xl="12">
       <span class="label">Manipulation</span> 
       <swiper :loop="true" :slidesPerView="1" :modules="modules" :navigation="{
@@ -219,19 +220,22 @@ export default {
   --swiper-theme-color: white;
   position: relative;
   max-width: 100%;
+  max-width: 100%;
 }
 .swiper-button-next {
   right: 10px;
 }
 /* .swiper-manipulation {
+/* .swiper-manipulation {
   margin: 0;   
   padding: 0;
 } */
- .swiper-slide {
+.swiper-slide {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;}
+  height: 100%;
+}
 
 .double-swiper {
   display: flex;
