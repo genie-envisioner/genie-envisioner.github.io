@@ -7,11 +7,11 @@ const logo = './AgiBot.jpg'
 
 const title = 'Genie Envisioner'
 
-const title_color = '#000000'
+const title_color = '#53abe1'
 
 const title_supp = 'A Unified World Foundation Model for Robotic Manipulation'
 
-const title_supp_color = '#444444'
+const title_supp_color = '#75579b'
 
 const btn_color = '#444444'
 
@@ -164,7 +164,7 @@ const buttons = [
     <el-row justify="center">
       <el-col :xs="24" :sm="20" :md="16" :lg="12" :xl="12">
         <el-container class="video-container">
-          <video controls muted preload playsinline  style="max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 8px;">
+          <video controls muted preload playsinline  style="max-width: 90%; height: auto; display: block; margin: 0 auto; border-radius: 8px;">
             <source src="/video/agibot-genie-intro.mp4" type="video/mp4">
           </video>
           <!-- <el-image src="./carousel/Banner.png" fit="contain" /> -->
@@ -181,7 +181,7 @@ const buttons = [
 .paper-title {
   font-family: "MyFont", Verdana, sans-serif;
   letter-spacing: 2px;
-  font-size: 42px;
+  font-size: 50px;
   margin: 32px;
   text-align: center;
   margin-top: 2%;
