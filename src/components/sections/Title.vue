@@ -75,15 +75,9 @@ const buttons = [
   {
     disabled: false,
     name: "Code",
-    link: "https://genie-envisioner.github.io/",
+    link: "https://github.com/AgibotTech/Genie-Envisioner",
     component: Files,
   },
-  // {
-  //   disabled: false,
-  //   name: "Video",
-  //   link: "https://www.bilibili.com/video/BV15XkgYiE73/",
-  //   component: Film,
-  // },
 ]
 
 </script>

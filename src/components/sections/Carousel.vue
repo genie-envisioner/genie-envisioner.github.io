@@ -78,7 +78,7 @@ export default {
   <el-row justify="center" style="margin-right: 5%; margin-left: 5%">
     <el-col :xs="24" :sm="20" :md="16" :lg="12" :xl="12" style="min-height: 400px; display: flex; justify-content: flex-end;">
       <div class="double-swiper">
-      <span class="label">Video Generation</span> 
+      <span class="label">Video Generation</span>
       <swiper ref="genie_swiper1" :loop="true" :slidesPerView="1" :modules="modules" :navigation="{
         hideOnClick: true,
       }"
@@ -93,9 +93,11 @@ export default {
         }" 
         style="margin-top: 10px;"
         class="swiper-generation">
-        <swiper-slide v-for="(path, index) in firstGenieGenImages" class="slide" :key="index">
-          <el-image  :src="path" />
+        
+        <swiper-slide v-for="(path, index) in firstGenieGenImages" class="slide, slide_left" :key="index">
+         <el-image  :src="path" />
         </swiper-slide>
+        
       </swiper>
 
       <swiper ref="genie_swiper2" :loop="true" :slidesPerView="1" :modules="modules" :navigation="{
@@ -112,7 +114,7 @@ export default {
         }" 
         style="margin: 15px 0px 0px 0px;"
         class="swiper-generation">
-        <swiper-slide v-for="(path, index) in secondGenieGenImages" class="slide" :key="index">
+        <swiper-slide v-for="(path, index) in secondGenieGenImages" class="slide, slide_left" :key="index">
           <el-image  :src="path" />
         </swiper-slide>
       </swiper>
@@ -120,8 +122,8 @@ export default {
       
     </el-col>
 
-
     <el-col :xs="24" :sm="20" :md="16" :lg="12" :xl="12">
+      <div class="right-swiper">
       <span class="label">Manipulation</span> 
       <swiper :loop="true" :slidesPerView="1" :modules="modules" :navigation="{
         hideOnClick: true,
@@ -134,10 +136,11 @@ export default {
           disableOnInteraction: false,
           pauseOnMouseEnter: true,
         }">
-        <swiper-slide v-for="(path, index) in genie_manipulation_image_paths" :key="index" class="slide">
+        <swiper-slide v-for="(path, index) in genie_manipulation_image_paths" :key="index" class="slide, slide_right">
           <el-image :src="path" />
         </swiper-slide>
       </swiper>
+      </div>
       
     </el-col>
   </el-row>
@@ -148,8 +151,8 @@ export default {
 
   <el-row justify="center" style="margin-right: 5%; margin-left: 5%">
 
-     <el-col :xs="24" :sm="20" :md="16" :lg="12" :xl="12" style="min-height: 400px; display: flex; justify-content: flex-end;">
-      <div class="double-swiper" >
+    <el-col :xs="24" :sm="20" :md="16" :lg="12" :xl="12" style="min-height: 400px; display: flex; justify-content: flex-end;">
+      <div class="double-swiper">
         <span class="label">Video Generation</span> 
       <swiper ref="genie_swiper1" :loop="true" :slidesPerView="1" :modules="modules" :navigation="{
         hideOnClick: true,
@@ -165,7 +168,7 @@ export default {
         }" 
         style="margin-top: 10px;"
         class="swiper-generation">
-        <swiper-slide v-for="(path, index) in firstCrossGenImages" class="slide" :key="index">
+        <swiper-slide v-for="(path, index) in firstCrossGenImages" class="slide, slide_left" :key="index">
           <el-image  :src="path" />
         </swiper-slide>
       </swiper>
@@ -184,15 +187,14 @@ export default {
         }" 
         style="margin: 15px 0px 0px 0px;"
         class="swiper-generation">
-
-      
-        <swiper-slide v-for="(path, index) in secondCrossGenImages" class="slide" :key="index">
+        <swiper-slide v-for="(path, index) in secondCrossGenImages" class="slide, slide_left" :key="index">
           <el-image  :src="path" />
         </swiper-slide>
       </swiper>
       </div>
      </el-col>
     <el-col :xs="24" :sm="20" :md="16" :lg="12" :xl="12">
+      <div class="right-swiper">
       <span class="label">Manipulation</span> 
       <swiper :loop="true" :slidesPerView="1" :modules="modules" :navigation="{
         hideOnClick: true,
@@ -205,54 +207,96 @@ export default {
           disableOnInteraction: false,
           pauseOnMouseEnter: true,
         }" class="swiper-manipulation">
-        <swiper-slide v-for="path in cross_manipulation_image_paths" class="slide">
+        <swiper-slide v-for="path in cross_manipulation_image_paths" class="slide, slide_right" :key="path">
           <el-image :src="path" />
         </swiper-slide>
       </swiper>
+      </div>
     </el-col>
   </el-row>
 </template>
 
 <style>
-/* 设置Swiper风格 */
-
 .swiper {
   --swiper-theme-color: white;
   position: relative;
   max-width: 100%;
   max-width: 100%;
 }
+
 .swiper-button-next {
   right: 10px;
 }
-/* .swiper-manipulation {
-/* .swiper-manipulation {
-  margin: 0;   
-  padding: 0;
-} */
+
+.sbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 95%;
+}
+
+.slide_left {
+  justify-content: center;
+}
+
+.slide_right {
+  justify-content: center;
+}
+
 .swiper-slide {
   display: flex;
-  justify-content: center;
   align-items: center;
   height: 100%;
 }
 
 .double-swiper {
-  display: flex;
-  float: right;
-  flex-direction: column;
+  display: block;
+  /* float: right; */
+  /* flex-direction: column; */
   height: 95%;
-  max-width: 100%;
+  max-width:60%;
+  margin-left: 35%;
+
+  margin-right: 10px;
+  align-items: center;
+}
+.right-swiper {
+  display: block;
+  /* float: right; */
+  /* flex-direction: column; */
+  height: 95%;
+  max-width: 60%;
+  margin-right: 35%;
+  margin-left: 10px;
+  align-items: center;
+  object-fit: contain;
 }
 .slide img {
   width: 100%;
+  height: 100%;
   border-radius: 8px;
-  margin: 0;
+  margin: 10px;
   display: block;
+  /* display: flex;
+  justify-content: flex-end; */
 }
 .swiper-generation { width: 100%; }
 .section-title {
   margin: 20px 0;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  color: white; 
+}
+
+/* 控制按钮位置 */
+.swiper-button-prev {
+  left: 25px; /* 向内移动10px */
+}
+
+.swiper-button-next {
+  right: 25px;
 }
 .label {
   color: #7e8481;

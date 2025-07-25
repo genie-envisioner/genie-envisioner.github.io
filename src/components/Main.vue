@@ -56,6 +56,6 @@ export default {
   <!-- <ImageSliderInner /> -->
   <!-- <ImageSlider /> -->
   <!-- <ImageSelector /> -->
-  <BibTeX />
+  <!-- <BibTeX /> -->
   <!-- <Comment/> -->
 </template>
