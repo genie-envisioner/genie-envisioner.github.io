@@ -76,9 +76,9 @@ export default {
   </el-row>
 
   <el-row justify="center">
-
-    <div class="left-box">
+    <el-col :xs="24" :sm="20" :md="16" :lg="12" :xl="12" style="min-height: 400px; display: flex; justify-content: flex-end;">
       <div class="double-swiper">
+      <span class="label">Video Generation</span> 
       <swiper ref="genie_swiper1" :loop="true" :slidesPerView="1" :modules="modules" :navigation="{
         hideOnClick: true,
       }"
@@ -116,10 +116,11 @@ export default {
         </swiper-slide>
       </swiper>
       </div>
-      <span class="label">Video Generation</span> 
-    </div>
+      
+    </el-col>
 
-    <div class="right-box">
+    <el-col :xs="24" :sm="20" :md="16" :lg="12" :xl="12">
+      <span class="label">Manipulation</span> 
       <swiper :loop="true" :slidesPerView="1" :modules="modules" :navigation="{
         hideOnClick: true,
       }" :pagination="{
@@ -131,12 +132,12 @@ export default {
           disableOnInteraction: false,
           pauseOnMouseEnter: true,
         }">
-        <swiper-slide v-for="path in genie_manipulation_image_paths" class="slide">
+        <swiper-slide v-for="(path, index) in genie_manipulation_image_paths" :key="index" class="slide">
           <el-image :src="path" />
         </swiper-slide>
       </swiper>
-      <span class="label">Manipulation</span> 
-    </div>
+      
+    </el-col>
   </el-row>
 
   <el-row justify="center" class="section-title">
@@ -145,8 +146,9 @@ export default {
 
   <el-row justify="center">
 
-    <div class="left-box">
-      <div class="double-swiper" style="height: 95%; width: 700px">
+     <el-col :xs="24" :sm="20" :md="16" :lg="12" :xl="12" style="min-height: 400px; display: flex; justify-content: flex-end;">
+      <div class="double-swiper" >
+        <span class="label">Video Generation</span> 
       <swiper ref="genie_swiper1" :loop="true" :slidesPerView="1" :modules="modules" :navigation="{
         hideOnClick: true,
       }"
@@ -179,14 +181,16 @@ export default {
         }" 
         style="margin: 15px 0px 0px 0px;"
         class="swiper-generation">
+
+      
         <swiper-slide v-for="(path, index) in secondCrossGenImages" class="slide" :key="index">
           <el-image  :src="path" />
         </swiper-slide>
       </swiper>
       </div>
-      <span class="label">Video Generation</span> 
-    </div>
-    <div class="right-box">
+     </el-col>
+    <el-col :xs="24" :sm="20" :md="16" :lg="12" :xl="12">
+      <span class="label">Manipulation</span> 
       <swiper :loop="true" :slidesPerView="1" :modules="modules" :navigation="{
         hideOnClick: true,
       }" :pagination="{
@@ -202,8 +206,7 @@ export default {
           <el-image :src="path" />
         </swiper-slide>
       </swiper>
-      <span class="label">Manipulation</span> 
-    </div>
+    </el-col>
   </el-row>
 </template>
 
@@ -213,36 +216,27 @@ export default {
 .swiper {
   --swiper-theme-color: white;
   position: relative;
-  width: 600px;
+  max-width: 100%;
 }
 .swiper-button-next {
   right: 10px;
 }
-.swiper-manipulation {
+/* .swiper-manipulation {
   margin: 0;   
   padding: 0;
-}
-.left-box {
-  flex: 1;
-  padding: 10px;
-  margin-left: 15%;
-  max-width: 30%;
-  justify-content: right
-}
-.right-box {
-  /* flex: 1; */
+} */
+ .swiper-slide {
   display: flex;
-  flex-direction: column;
-  padding: 10px;
-  margin-right: 15%;
-  /* justify-content: left */
-  
-}
+  justify-content: center;
+  align-items: center;
+  height: 100%;}
+
 .double-swiper {
   display: flex;
+  float: right;
   flex-direction: column;
   height: 95%;
-  width: 700px;
+  max-width: 100%;
 }
 .slide img {
   width: 100%;
@@ -257,6 +251,9 @@ export default {
 .label {
   color: #7e8481;
   font-family: "MyFont", Verdana, sans-serif;
+  display: block; /* span 默认是 inline，改成 block 才能使用 text-align */
+  text-align: center;
+  margin-top: 5px; /* 可选 */
 }
 
 </style>
