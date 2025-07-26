@@ -148,9 +148,17 @@ const buttons = [
               <el-icon :size="18">
                 <component :is="button.component" />
               </el-icon>
-              <span class="btn-text">{{ button.name }}</span>
+              <span  class="btn-text">{{ button.name }}</span>
             </el-button>
           </a>
+          
+        </el-row>
+        <el-row justify="center">
+                         <div class="progress-wrapper">
+                <div class="progress-bar">
+                  <div class="progress-fill" :style="{ width: '80%' }"><div class="progress-text" style="text-align: center">Coming Soon</div></div>
+                </div>
+              </div>
         </el-row>
       </el-col>
     </el-row>
@@ -281,4 +289,35 @@ a {
 	color: inherit;
 }
 
+.progress-wrapper {
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.progress-text {
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  font-size: 12px;
+  text-align: center;
+  /* margin-bottom: 5px; */
+  font-family: "MyFont", Verdana, sans-serif;
+  color: #333;
+}
+
+.progress-bar {
+  height: 20px;
+  background-color: #eee;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #42b983; /* Vue 绿色 */
+  width: 0;
+  transition: width 0.5s ease;
+}
 </style>
