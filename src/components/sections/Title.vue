@@ -53,17 +53,6 @@ const addresses = [
 const con_and_corresponding_author = 
   "* Equal Contribution. ◆ Corresponding Author. † Project Leader."
 
-// 最新消息
-// const news = "🔥 [2024-12-15] This template project is still under development."
-
-// 强调内容
-// const emphases = [
-//   "🎉 [ABCD 2024] Poster",
-//   "🥰 欢迎关注“减论”微信公众号/B站/知乎/小红书",
-//   "传递人工智能算法科普教育的减约理解",
-//   "提升信息效率及认知维度"
-// ]
-
 // 提供引导资料链接
 const buttons = [
   {
@@ -295,8 +284,44 @@ a {
   margin: 0 auto;
 }
 
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background-color: #eee;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  
+  height: 100%;
+  background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+  animation: fillLoop 5s ease-in-out infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: white;
+  font-size: 15px;
+  transition: width 0.3s ease;
+}
+
+/* 动画从 0% 到 80%，再回到 0% */
+@keyframes fillLoop {
+  0% {
+    width: 10%;
+  }
+  50% {
+    width: 60%;
+  }
+  100% {
+    width: 80%;
+  }
+}
+
 .progress-text {
-   display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   height: 20px;
@@ -305,19 +330,11 @@ a {
   /* margin-bottom: 5px; */
   font-family: "MyFont", Verdana, sans-serif;
   color: #333;
+  position: absolute;
+  left: 91%;
+  transform: translateX(-50%);
+  white-space: nowrap;
 }
 
-.progress-bar {
-  height: 20px;
-  background-color: #eee;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.progress-fill {
-  height: 100%;
-  background-color: #42b983; /* Vue 绿色 */
-  width: 0;
-  transition: width 0.5s ease;
-}
 </style>
+
