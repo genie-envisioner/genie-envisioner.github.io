@@ -1,35 +1,40 @@
 <script lang="ts" setup>
+import { ElIcon } from "element-plus";
+import {
+  Document,
+  Files,
+  MagicStick,
+  Picture,
+  DataAnalysis,
+  Film,
+} from "@element-plus/icons-vue";
 
-import { ElIcon } from 'element-plus'
-import { Document, Files, MagicStick, Picture, DataAnalysis, Film } from '@element-plus/icons-vue'
+const logo = "./AgiBot.jpg";
 
-const logo = './AgiBot.jpg'
+const title = "Genie Envisioner";
 
-const title = 'Genie Envisioner'
+const title_color = "#53abe1";
 
-const title_color = '#53abe1'
+const title_supp = "A Unified World Foundation Model for Robotic Manipulation";
 
-const title_supp = 'A Unified World Foundation Model for Robotic Manipulation'
+const title_supp_color = "#75579b";
 
-const title_supp_color = '#75579b'
+const btn_color = "#444444";
 
-const btn_color = '#444444'
-
-// homepage: "https://junyaohu.github.io/",
 const authors = [
   { name: "Yue Liao", address_flag: "*" },
   { name: "Pengfei Zhou", address_flag: "*" },
   { name: "Siyuan Huang", address_flag: "*" },
   { name: "Donglin Yang", address_flag: "" },
   { name: "Shengcong Chen", address_flag: "" },
-  { name: "Yuxin Jiang", address_flag: "", },
-  { name: "Yue Hu", address_flag: "", },
-  { name: "Jingbin Cai", address_flag: "", },
-  { name: "Si Liu", address_flag: "", },
-  { name: "Liliang Chen", address_flag: "†", },
-  { name: "Shuicheng Yan", address_flag: "◆", },
-  { name: "Maoqing Yao", address_flag: "◆", },
-  { name: "Guanghui Ren", address_flag: "†◆", },
+  { name: "Yuxin Jiang", address_flag: "" },
+  { name: "Yue Hu", address_flag: "" },
+  { name: "Jingbin Cai", address_flag: "" },
+  { name: "Si Liu", address_flag: "" },
+  { name: "Liliang Chen", address_flag: "†" },
+  { name: "Shuicheng Yan", address_flag: "◆" },
+  { name: "Maoqing Yao", address_flag: "◆" },
+  { name: "Guanghui Ren", address_flag: "†◆" },
 ];
 
 // 地址清单（包含地址名称、头像、主页、地址序号）
@@ -37,7 +42,7 @@ const addresses = [
   {
     // address_flag: "1",
     name: "AgiBot",
-    homepage: "https://www.agibot.com/"
+    homepage: "https://www.agibot.com/",
   },
   {
     // address_flag: "2",
@@ -48,10 +53,10 @@ const addresses = [
     // address_flag: "3",
     name: "BUAA",
   },
-]
+];
 
-const con_and_corresponding_author = 
-  "* Equal Contribution. ◆ Corresponding Author. † Project Leader."
+const con_and_corresponding_author =
+  "* Equal Contribution. ◆ Corresponding Author. † Project Leader.";
 
 // 提供引导资料链接
 const buttons = [
@@ -67,8 +72,7 @@ const buttons = [
     link: "https://github.com/AgibotTech/Genie-Envisioner",
     component: Files,
   },
-]
-
+];
 </script>
 
 <template>
@@ -79,13 +83,15 @@ const buttons = [
     </el-row> -->
 
     <!-- 文章标题 -->
-    <el-row justify="center" >
-      <el-col :span="20" style="text-align: center;" >
-        <h1 class="paper-title" style="margin-bottom: 1%;">
-          <span v-if="title" :style="{color:title_color}"> {{ title }}</span>
+    <el-row justify="center">
+      <el-col :span="20" style="text-align: center">
+        <h1 class="paper-title" style="margin-bottom: 1%">
+          <span v-if="title" :style="{ color: title_color }"> {{ title }}</span>
         </h1>
-        <h3 style="margin-top: 0;">
-          <span v-if="title_supp" :style="{color:title_supp_color}"> {{ title_supp }}</span>
+        <h3 style="margin-top: 0">
+          <span v-if="title_supp" :style="{ color: title_supp_color }">
+            {{ title_supp }}</span
+          >
         </h3>
       </el-col>
     </el-row>
@@ -125,29 +131,38 @@ const buttons = [
     -->
     <!-- 强调内容 -->
     <el-row justify="center" class="emphasis" v-for="emphasis in emphases">
-        {{ emphasis }}
+      {{ emphasis }}
     </el-row>
 
     <!-- 提供引导按钮 -->
-    <el-row justify="center" style="margin-bottom: 20px;">
+    <el-row justify="center" style="margin-bottom: 20px">
       <el-col :span="20">
         <el-row justify="center">
-          <a :href=button.link v-for="button in buttons">
-            <el-button class="guidance-button" size="default" :color="btn_color" :disabled="button.disabled" round>
+          <a :href="button.link" v-for="button in buttons">
+            <el-button
+              class="guidance-button"
+              size="default"
+              :color="btn_color"
+              :disabled="button.disabled"
+              round
+            >
               <el-icon :size="18">
                 <component :is="button.component" />
               </el-icon>
-              <span  class="btn-text">{{ button.name }}</span>
+              <span class="btn-text">{{ button.name }}</span>
             </el-button>
           </a>
-          
         </el-row>
         <el-row justify="center">
-                         <div class="progress-wrapper">
-                <div class="progress-bar">
-                  <div class="progress-fill" :style="{ width: '80%' }"><div class="progress-text" style="text-align: center">Coming Soon</div></div>
+          <div class="progress-wrapper">
+            <div class="progress-bar">
+              <div class="progress-fill" :style="{ width: '80%' }">
+                <div class="progress-text" style="text-align: center">
+                  Coming Soon
                 </div>
               </div>
+            </div>
+          </div>
         </el-row>
       </el-col>
     </el-row>
@@ -155,18 +170,28 @@ const buttons = [
     <el-row justify="center">
       <el-col :xs="24" :sm="20" :md="16" :lg="12" :xl="12">
         <el-container class="video-container">
-          <video controls muted preload playsinline  style="max-width: 90%; height: auto; display: block; margin: 0 auto; border-radius: 8px;">
-            <source src="/video/agibot-genie-intro.mp4" type="video/mp4">
+          <video
+            controls
+            muted
+            preload
+            playsinline
+            style="
+              max-width: 90%;
+              height: auto;
+              display: block;
+              margin: 0 auto;
+              border-radius: 8px;
+            "
+          >
+            <source src="/video/agibot-genie-intro.mp4" type="video/mp4" />
           </video>
         </el-container>
       </el-col>
     </el-row>
-
   </div>
 </template>
 
 <style scoped>
-
 /* 文章标题字体、字间距、居中排布、字号 */
 .paper-title {
   font-family: "MyFont", Verdana, sans-serif;
@@ -201,7 +226,7 @@ const buttons = [
 
 /* 姓名上标属性 */
 .name_sup {
-  color: #000000; 
+  color: #000000;
   margin-left: 3px;
 }
 
@@ -212,7 +237,7 @@ const buttons = [
 
 /* 地址上标属性 */
 .address_sup {
-  color: #606266; 
+  color: #606266;
   margin-right: 1px;
 }
 
@@ -254,7 +279,7 @@ const buttons = [
 }
 
 .logo {
-  width: 20%; 
+  width: 20%;
   height: 15%;
   /* border-radius: 20%; */
   /* box-shadow: #ced3dc 0px 0px 3px 2px; */
@@ -274,8 +299,8 @@ a:hover {
 
 /* 链接装饰，取消下划线和链接颜色 */
 a {
-	text-decoration: None;
-	color: inherit;
+  text-decoration: None;
+  color: inherit;
 }
 
 .progress-wrapper {
@@ -294,7 +319,6 @@ a {
 }
 
 .progress-fill {
-  
   height: 100%;
   background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
   animation: fillLoop 5s ease-in-out infinite;
@@ -335,6 +359,4 @@ a {
   transform: translateX(-50%);
   white-space: nowrap;
 }
-
 </style>
-

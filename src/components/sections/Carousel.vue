@@ -13,6 +13,8 @@ export default {
   },
   data() {
     return {
+      first_line: [" ", " "],
+      second_line: [" ", " "],
       modules: [Navigation, Pagination, Autoplay],
       // 选择要轮播的照片
       genie_manipulation_image_paths: [
@@ -152,6 +154,76 @@ export default {
       );
     },
   },
+  methods: {
+    onCrossRightSlideInit(s) {
+      const index = s.realIndex;
+      if (this.cross_manipulation_image_paths[index]) {
+        this.second_line[1] =
+          this.cross_manipulation_image_paths[index].caption;
+      } else {
+        this.second_line[1] = "";
+      }
+    },
+    onCrossLeftSlideInit(s) {
+      const index = s.realIndex;
+      if (this.secondCrossGenImages[index]) {
+        this.second_line[0] = this.secondCrossGenImages[index].caption;
+      } else {
+        this.second_line[0] = "";
+      }
+    },
+    onG1LeftSlideInit(s) {
+      const index = s.realIndex;
+      if (this.secondGenieGenImages[index]) {
+        this.first_line[0] = this.secondGenieGenImages[index].caption;
+      } else {
+        this.first_line[0] = "";
+      }
+    },
+    onG1RightSlideInit(s) {
+      const index = s.realIndex;
+      if (this.genie_manipulation_image_paths[index]) {
+        this.first_line[1] = this.genie_manipulation_image_paths[index].caption;
+      } else {
+        this.first_line[1] = "";
+      }
+    },
+    onG1LeftSlideChange(s) {
+      const index = s.realIndex;
+      if (this.genie_generation_image_paths[index]) {
+        this.first_line[0] = this.secondGenieGenImages[index].caption;
+      } else {
+        this.first_line[0] = "";
+      }
+    },
+    onG1RightSlideChange(s) {
+      const index = s.realIndex;
+      if (this.genie_manipulation_image_paths[index]) {
+        this.first_line[1] = this.genie_manipulation_image_paths[index].caption;
+      } else {
+        this.first_line[1] = "";
+      }
+    },
+    onCrossLeftSlideChange(s) {
+      const index = s.realIndex;
+      if (this.secondCrossGenImages[index]) {
+        this.second_line[0] = this.secondCrossGenImages[index].caption;
+      } else {
+        this.second_line[0] = "";
+      }
+    },
+    onCrossRightSlideChange(s) {
+      const index = s.activeIndex;
+
+      if (this.cross_manipulation_image_paths[index]) {
+        this.second_line[1] =
+          this.cross_manipulation_image_paths[index].caption;
+      } else {
+        this.second_line[1] = "";
+      }
+      console.log(index, this.cross_manipulation_image_paths[index].caption);
+    },
+  },
 };
 </script>
 
@@ -163,45 +235,47 @@ export default {
   <el-row justify="center" style="margin-right: 5%; margin-left: 5%">
     <el-col
       :xs="24"
-      :sm="20"
-      :md="16"
+      :sm="12"
+      :md="12"
       :lg="12"
       :xl="12"
-      style="min-height: 400px; display: flex; justify-content: flex-end"
+      style="display: flex; justify-content: flex-end"
     >
       <div class="double-swiper">
-        <span class="label">Video Generation</span>
-        <swiper
-          ref="genie_swiper1"
-          :loop="true"
-          :slidesPerView="1"
-          :modules="modules"
-          :navigation="{
-            hideOnClick: true,
-          }"
-          :pagination="{
-            hideOnClick: true,
-            clickable: true,
-            type: 'bullets',
-          }"
-          :autoplay="{
-            delay: 2400,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-          }"
-          class="swiper-generation"
-        >
-          <swiper-slide
-            v-for="(item, index) in firstGenieGenImages"
-            class="slide, slide_left"
-            :key="index"
+        <div class="double-swiper-inner">
+          <span class="label">Video Generation</span>
+          <swiper
+            ref="genie_swiper1"
+            :loop="true"
+            :slidesPerView="1"
+            :modules="modules"
+            :navigation="{
+              hideOnClick: true,
+            }"
+            :pagination="{
+              hideOnClick: true,
+              clickable: true,
+              type: 'bullets',
+            }"
+            :autoplay="{
+              delay: 2400,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }"
+            class="swiper-generation"
           >
-            <div class="image-caption-wrapper">
-              <el-image :src="item.src" />
-              <div class="caption">{{ item.caption }}</div>
-            </div>
-          </swiper-slide>
-        </swiper>
+            <swiper-slide
+              v-for="(item, index) in firstGenieGenImages"
+              class="slide, slide_left"
+              :key="index"
+            >
+              <div class="image-caption-wrapper">
+                <el-image :src="item.src" />
+                <div class="caption">{{ item.caption }}</div>
+              </div>
+            </swiper-slide>
+          </swiper>
+        </div>
         <swiper
           ref="genie_swiper2"
           :loop="true"
@@ -210,6 +284,8 @@ export default {
           :navigation="{
             hideOnClick: true,
           }"
+          @swiper="onG1LeftSlideInit"
+          @slideChange="onG1LeftSlideChange"
           :pagination="{
             hideOnClick: true,
             clickable: true,
@@ -236,10 +312,11 @@ export default {
       </div>
     </el-col>
 
-    <el-col :xs="24" :sm="20" :md="16" :lg="12" :xl="12">
+    <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
       <div class="right-swiper">
         <span class="label">Manipulation</span>
         <swiper
+          ref="agi_right_swiper"
           :loop="true"
           :slidesPerView="1"
           :modules="modules"
@@ -251,6 +328,8 @@ export default {
             clickable: true,
             type: 'bullets',
           }"
+          @swiper="onG1RightSlideInit"
+          @slideChange="onG1RightSlideChange"
           :autoplay="{
             delay: 2400,
             disableOnInteraction: false,
@@ -279,48 +358,50 @@ export default {
   <el-row justify="center" style="margin-right: 5%; margin-left: 5%">
     <el-col
       :xs="24"
-      :sm="20"
-      :md="16"
+      :sm="12"
+      :md="12"
       :lg="12"
       :xl="12"
-      style="min-height: 400px; display: flex; justify-content: flex-end"
+      style="display: flex; justify-content: flex-end"
     >
       <div class="double-swiper">
-        <span class="label">Video Generation</span>
-        <swiper
-          ref="genie_swiper1"
-          :loop="true"
-          :slidesPerView="1"
-          :modules="modules"
-          :navigation="{
-            hideOnClick: true,
-          }"
-          :pagination="{
-            hideOnClick: true,
-            clickable: true,
-            type: 'bullets',
-          }"
-          :autoplay="{
-            delay: 2400,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-          }"
-          class="swiper-generation"
-        >
-          <swiper-slide
-            v-for="(item, index) in firstCrossGenImages"
-            class="slide, slide_left"
-            :key="index"
+        <div class="double-swiper-inner">
+          <span class="label">Video Generation</span>
+          <swiper
+            ref="genie_swiper1"
+            :loop="true"
+            :slidesPerView="1"
+            :modules="modules"
+            :navigation="{
+              hideOnClick: true,
+            }"
+            :pagination="{
+              hideOnClick: true,
+              clickable: true,
+              type: 'bullets',
+            }"
+            :autoplay="{
+              delay: 2400,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }"
+            class="swiper-generation"
+            style="margin-bottom: 4px"
           >
-            <div class="image-caption-wrapper">
-              <el-image :src="item.src" />
-              <div class="caption">{{ item.caption }}</div>
-            </div>
-          </swiper-slide>
-        </swiper>
-
+            <swiper-slide
+              v-for="(item, index) in firstCrossGenImages"
+              class="slide, slide_left"
+              :key="index"
+            >
+              <div class="image-caption-wrapper">
+                <el-image :src="item.src" />
+                <div class="caption">{{ item.caption }}</div>
+              </div>
+            </swiper-slide>
+          </swiper>
+        </div>
         <swiper
-          ref="genie_swiper2"
+          ref="cross_swiper2"
           :loop="true"
           :slidesPerView="1"
           :modules="modules"
@@ -332,6 +413,8 @@ export default {
             clickable: true,
             type: 'bullets',
           }"
+          @swiper="onCrossLeftSlideInit"
+          @slideChange="onCrossLeftSlideChange"
           :autoplay="{
             delay: 2400,
             disableOnInteraction: false,
@@ -352,16 +435,19 @@ export default {
         </swiper>
       </div>
     </el-col>
-    <el-col :xs="24" :sm="20" :md="16" :lg="12" :xl="12">
+    <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
       <div class="right-swiper">
         <span class="label">Manipulation</span>
         <swiper
+          ref="cross_right_swiper"
           :loop="true"
           :slidesPerView="1"
           :modules="modules"
           :navigation="{
             hideOnClick: true,
           }"
+          @swiper="onCrossRightSlideInit"
+          @slideChange="onCrossRightSlideChange"
           :pagination="{
             hideOnClick: true,
             clickable: true,
@@ -372,7 +458,6 @@ export default {
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
           }"
-          class="swiper-manipulation"
         >
           <swiper-slide
             v-for="item in cross_manipulation_image_paths"
@@ -388,6 +473,15 @@ export default {
       </div>
     </el-col>
   </el-row>
+  <!-- <el-row justify="center" style="margin-right: 5%; margin-left: 5%">
+    <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6" class="bottom-caption-left"
+      ><div class="caption">{{ second_line[0] }}</div>
+    </el-col>
+
+    <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6" class="bottom-caption-right"
+      ><div class="caption">{{ second_line[1] }}</div>
+    </el-col>
+  </el-row> -->
 </template>
 
 <style>
@@ -398,63 +492,73 @@ export default {
   max-width: 100%;
 }
 
-.sbox {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  width: 95%;
-}
-
-.slide_left {
-  justify-content: center;
-}
-
+.slide_left,
 .slide_right {
   justify-content: center;
 }
 
-.swiper-slide {
+/* .swiper-slide {
   display: flex;
   align-items: center;
-  /* height: 100%; */
   min-width: 30%;
-}
+} */
 
 .double-swiper {
-  display: block;
-  /* float: right; */
-  /* flex-direction: column; */
-  height: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 30%;
   max-width: 60%;
   margin-left: 35%;
-
   margin-right: 10px;
   align-items: center;
 }
+.double-swiper-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
 .right-swiper {
-  display: block;
-  /* float: right; */
-  /* flex-direction: column; */
-  height: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 30%;
   max-width: 60%;
   margin-right: 35%;
   margin-left: 10px;
   align-items: center;
-  object-fit: contain;
 }
+
+.image-caption-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .slide img {
   width: 100%;
   height: 100%;
   border-radius: 8px;
-  margin: 10px;
   display: block;
   /* display: flex;
   justify-content: flex-end; */
 }
-.swiper-generation {
-  width: 100%;
+
+.caption {
+  margin-top: 2px;
+  margin-bottom: 3px;
+
+  font-size: clamp(2px, 0.9vw, 16px);
+  font-family: "Gill Sans", sans-serif;
+  font-style: italic;
+  color: #333;
+  text-align: center;
 }
+
+/* .swiper-generation {
+  width: 100%;
+} */
 .section-title {
   margin: 20px 0;
 }
@@ -480,22 +584,7 @@ export default {
   text-align: center;
   margin-top: 5px; /* 可选 */
   margin-bottom: 10px;
-  font-size: 20px;
-}
-.image-caption-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.caption {
-  margin-top: 3px;
-  margin-bottom: 2px;
-  font-size: 17px;
-  font-family: "Gill Sans", sans-serif;
-  font-style: italic;
-  color: #333;
-  text-align: center;
+  font-size: clamp(12px, 1.4vw, 22px);
 }
 
 .swiper-pagination {
@@ -508,5 +597,21 @@ export default {
   /* margin-top: 14px;  */
   /* position: relative; */
   display: none !important;
+}
+.bottom-caption-left,
+.bottom-caption-right {
+  display: block;
+  /* float: right; */
+  /* flex-direction: column; */
+  /* height: 95%; */
+  /* height: 350px; */
+  align-items: center;
+  object-fit: contain;
+}
+.bottom-caption-left {
+  margin-left: 25%;
+}
+.bottom-caption-right {
+  margin-right: 25%;
 }
 </style>
