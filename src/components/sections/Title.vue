@@ -31,6 +31,7 @@ const authors = [
   { name: "Yue Hu", address_flag: "" },
   { name: "Jingbin Cai", address_flag: "" },
   { name: "Si Liu", address_flag: "" },
+  { name: "Jianlan Luo", address_flag: "" },
   { name: "Liliang Chen", address_flag: "†" },
   { name: "Shuicheng Yan", address_flag: "◆" },
   { name: "Maoqing Yao", address_flag: "◆" },
@@ -56,7 +57,7 @@ const addresses = [
 ];
 
 const con_and_corresponding_author =
-  "* Equal Contribution. ◆ Corresponding Author. † Project Leader.";
+  "* Equal Contribution.   ◆ Corresponding Author.   † Project Leader.";
 
 // 提供引导资料链接
 const buttons = [
@@ -97,38 +98,42 @@ const buttons = [
     </el-row>
 
     <!-- 作者名单 -->
-    <!--
-    <el-row justify="center">
-      <a :href=author.homepage v-for="author in authors">
+
+    <el-row justify="center" style="max-width: 55%; margin: 0 auto">
+      <a :href="author.homepage" v-for="author in authors">
         <el-button class="title-button" type="primary" text>
           <el-avatar v-if="author.icon" :size="40" :src="author.icon" />
           <span class="author">
-            {{ author.name }}<sup v-if="author.address_flag" class="name_sup">{{ author.address_flag }}</sup>
-          </span>
-        </el-button>
-      </a>
-    </el-row>
-    -->
-    <!-- 地址名单 -->
-    <!--
-    <el-row justify="center">
-      <a :href=address.homepage v-for="address in addresses">
-        <el-button class="title-button" type="primary" text>
-          <el-avatar v-if="address.icon" :size="40" :src="address.icon" />
-          <span class="address">
-            <sup v-if="address.address_flag" class="address_sup">{{ address.address_flag }}</sup>{{ address.name }}
+            {{ author.name
+            }}<sup v-if="author.address_flag" class="name_sup">{{
+              author.address_flag
+            }}</sup>
           </span>
         </el-button>
       </a>
     </el-row>
 
-    -->
-    <!-- 共一和通讯提示内容 -->
-    <!--
-    <el-row justify="center" class="con-cor">
-        {{ con_and_corresponding_author }}
+    <!-- 地址名单 -->
+
+    <el-row justify="center">
+      <a :href="address.homepage" v-for="address in addresses">
+        <el-button class="title-button, address-button" type="primary" text>
+          <el-avatar v-if="address.icon" :size="40" :src="address.icon" />
+          <span class="address">
+            <sup v-if="address.address_flag" class="address_sup">{{
+              address.address_flag
+            }}</sup
+            >{{ address.name }}
+          </span>
+        </el-button>
+      </a>
     </el-row>
-    -->
+
+    <!-- 共一和通讯提示内容 -->
+    <el-row justify="center" class="con-cor">
+      {{ con_and_corresponding_author }}
+    </el-row>
+
     <!-- 强调内容 -->
     <el-row justify="center" class="emphasis" v-for="emphasis in emphases">
       {{ emphasis }}
@@ -168,7 +173,7 @@ const buttons = [
     </el-row>
 
     <el-row justify="center">
-      <el-col :xs="24" :sm="20" :md="16" :lg="12" :xl="12">
+      <el-col :xs="24" :sm="20" :md="16" :lg="16" :xl="16">
         <el-container class="video-container">
           <video
             controls
@@ -183,7 +188,7 @@ const buttons = [
               border-radius: 8px;
             "
           >
-            <source src="/video/agibot-genie-intro.mp4" type="video/mp4" />
+            <source src="/video/agibot-genie-intro-v1.mp4" type="video/mp4" />
           </video>
         </el-container>
       </el-col>
@@ -192,24 +197,26 @@ const buttons = [
 </template>
 
 <style scoped>
-/* 文章标题字体、字间距、居中排布、字号 */
 .paper-title {
   font-family: "MyFont", Verdana, sans-serif;
   letter-spacing: 2px;
-  font-size: 50px;
+  font-size: clamp(10px, 10vw, 50px);
   margin: 32px;
   text-align: center;
   margin-top: 2%;
+  word-break: break-word;
+  white-space: normal;
 }
 
 /* 姓名和地址按钮 */
 .title-button {
-  margin: 10px 3px;
+  /* margin: 10px 3px; */
+  padding: 1px 5px;
 }
 
 /* 姓名和地址按钮光标悬浮 */
 .title-button:hover {
-  margin: 10px 8px;
+  margin: 2px 3px;
 }
 
 /* 引导材料按钮 */
@@ -220,8 +227,9 @@ const buttons = [
 
 /* 姓名属性 */
 .author {
-  font-size: 18px;
+  font-size: clamp(10px, 8vw, 20px);
   margin-left: 3px;
+  color: rgb(63, 59, 77);
 }
 
 /* 姓名上标属性 */
@@ -233,6 +241,7 @@ const buttons = [
 /* 地址属性 */
 .address {
   font-size: 18px;
+  color: rgb(0, 0, 0);
 }
 
 /* 地址上标属性 */
@@ -251,7 +260,7 @@ const buttons = [
 .con-cor {
   font-family: Arial;
   font-size: 14px;
-  margin: 18px 0px;
+  margin: 10px 0px 5px 0px;
   text-align: center;
 }
 
@@ -360,3 +369,8 @@ a {
   white-space: nowrap;
 }
 </style>
+// 首页的视频 更新分辨率 视频添加instr 体现记忆 // 左右margin 减少 //
+作者行间距、间距 & 单位 // // 对应关系 prompt: 把盒子叠好
+把黄色圆形糖果/白色方形糖果放进盒子里，盖上盖子，并盖上对应的章 // （黄色
+蓝章）、 （白色 红章） // 视频开头 + 介绍 （跨本体、软体夹具、memory） //
+第一段完整 + 分屏 // agibot g1 daoshui // 动图大些

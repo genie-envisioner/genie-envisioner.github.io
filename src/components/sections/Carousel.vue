@@ -221,7 +221,6 @@ export default {
       } else {
         this.second_line[1] = "";
       }
-      console.log(index, this.cross_manipulation_image_paths[index].caption);
     },
   },
 };
@@ -239,7 +238,7 @@ export default {
       :md="12"
       :lg="12"
       :xl="12"
-      style="display: flex; justify-content: flex-end"
+      style="display: flex; justify-content: center"
     >
       <div class="double-swiper">
         <div class="double-swiper-inner">
@@ -362,7 +361,7 @@ export default {
       :md="12"
       :lg="12"
       :xl="12"
-      style="display: flex; justify-content: flex-end"
+      style="display: flex; justify-content: center"
     >
       <div class="double-swiper">
         <div class="double-swiper-inner">
@@ -508,9 +507,9 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   min-height: 30%;
-  max-width: 60%;
-  margin-left: 35%;
-  margin-right: 10px;
+  max-width: 80%;
+  /* margin-left: 15%; */
+  /* margin-right: 10px; */
   align-items: center;
 }
 .double-swiper-inner {
@@ -524,9 +523,9 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   min-height: 30%;
-  max-width: 60%;
-  margin-right: 35%;
-  margin-left: 10px;
+  max-width: 80%;
+  /* margin-right: 15%;
+  margin-left: 10px; */
   align-items: center;
 }
 
@@ -541,8 +540,6 @@ export default {
   height: 100%;
   border-radius: 8px;
   display: block;
-  /* display: flex;
-  justify-content: flex-end; */
 }
 
 .caption {
@@ -591,6 +588,9 @@ export default {
   margin-top: 14px;
   position: relative;
   display: none !important;
+}
+.el-image__inner {
+  width: 100%;
 }
 
 .double-swiper .swiper-pagination {
