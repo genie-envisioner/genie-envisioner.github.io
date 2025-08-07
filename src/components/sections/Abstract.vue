@@ -7,7 +7,7 @@ import abstract from "../mds/abstract.mdx";
     <el-divider />
 
     <el-row justify="center">
-      <el-col :xs="24" :sm="20" :md="16" :lg="16" :xl="16">
+      <el-col :xs="24" :sm="24" :md="16" :lg="16" :xl="16">
         <div style="textalign: justify">
           <p style="font-size: clamp(10px, 1.1vw, 40px); line-height: 1.6">
             We introduce
@@ -62,4 +62,7 @@ import abstract from "../mds/abstract.mdx";
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+/* @media (max-width: 1000px) {
+} */
+</style>
