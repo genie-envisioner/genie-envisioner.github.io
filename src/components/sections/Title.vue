@@ -25,13 +25,13 @@ const authors = [
   { name: "Yue Liao", address_flag: "*" },
   { name: "Pengfei Zhou", address_flag: "*" },
   { name: "Siyuan Huang", address_flag: "*" },
-  { name: "Donglin Yang", address_flag: "" },
-  { name: "Shengcong Chen", address_flag: "" },
-  { name: "Yuxin Jiang", address_flag: "" },
-  { name: "Yue Hu", address_flag: "" },
-  { name: "Jingbin Cai", address_flag: "" },
-  { name: "Si Liu", address_flag: "" },
-  { name: "Jianlan Luo", address_flag: "" },
+  { name: "Donglin Yang", address_flag: " " },
+  { name: "Shengcong Chen", address_flag: " " },
+  { name: "Yuxin Jiang", address_flag: " " },
+  { name: "Yue Hu", address_flag: " " },
+  { name: "Jingbin Cai", address_flag: " " },
+  { name: "Si Liu", address_flag: " " },
+  { name: "Jianlan Luo", address_flag: " " },
   { name: "Liliang Chen", address_flag: "†" },
   { name: "Shuicheng Yan", address_flag: "◆" },
   { name: "Maoqing Yao", address_flag: "◆" },
@@ -82,14 +82,19 @@ const buttons = [
     <!-- <el-row v-if="logo" justify="center">
       <el-image :src="logo" class="logo" fit="cover" />
     </el-row> -->
-
+    <!-- <div class="background">
+      <video class="background-video" autoplay muted loop playsinline>
+        <source src="/video/agibot-world.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="overlay"></div> -->
     <!-- 文章标题 -->
     <el-row justify="center">
-      <el-col :span="20" style="text-align: center">
+      <el-col :span="24" style="text-align: center">
         <h1 class="paper-title" style="margin-bottom: 1%">
           <span v-if="title" :style="{ color: title_color }"> {{ title }}</span>
         </h1>
-        <h3 style="margin-top: 0">
+        <h3 style="margin-top: 0" class="title-supp">
           <span v-if="title_supp" :style="{ color: title_supp_color }">
             {{ title_supp }}</span
           >
@@ -99,23 +104,25 @@ const buttons = [
 
     <!-- 作者名单 -->
 
-    <el-row justify="center" style="max-width: 55%; margin: 0 auto">
-      <a :href="author.homepage" v-for="author in authors">
-        <el-button class="title-button" type="primary" text>
-          <el-avatar v-if="author.icon" :size="40" :src="author.icon" />
-          <span class="author">
-            {{ author.name
-            }}<sup v-if="author.address_flag" class="name_sup">{{
-              author.address_flag
-            }}</sup>
-          </span>
-        </el-button>
-      </a>
+    <el-row justify="center" style="margin: 0 auto" class="author-list">
+      <div class="authors">
+        <a :href="author.homepage" v-for="author in authors">
+          <el-button class="title-button" type="primary" text>
+            <el-avatar v-if="author.icon" :size="40" :src="author.icon" />
+            <span class="author">
+              {{ author.name
+              }}<sup v-if="author.address_flag" class="name_sup"
+                ><b> {{ author.address_flag }}</b></sup
+              >
+            </span>
+          </el-button>
+        </a>
+      </div>
     </el-row>
 
     <!-- 地址名单 -->
 
-    <el-row justify="center">
+    <el-row justify="center" style="margin-top: 0.5vw">
       <a :href="address.homepage" v-for="address in addresses">
         <el-button class="title-button, address-button" type="primary" text>
           <el-avatar v-if="address.icon" :size="40" :src="address.icon" />
@@ -158,7 +165,7 @@ const buttons = [
             </el-button>
           </a>
         </el-row>
-        <el-row justify="center">
+        <!-- <el-row justify="center">
           <div class="progress-wrapper">
             <div class="progress-bar">
               <div class="progress-fill" :style="{ width: '80%' }">
@@ -168,7 +175,7 @@ const buttons = [
               </div>
             </div>
           </div>
-        </el-row>
+        </el-row> -->
       </el-col>
     </el-row>
 
@@ -188,7 +195,7 @@ const buttons = [
               border-radius: 8px;
             "
           >
-            <source src="/video/agibot-genie-intro-v1.mp4" type="video/mp4" />
+            <source src="/video/agibot-genie-intro.mp4" type="video/mp4" />
           </video>
         </el-container>
       </el-col>
@@ -197,39 +204,96 @@ const buttons = [
 </template>
 
 <style scoped>
+@media (max-width: 1000px) {
+  .author-list {
+    width: 99%;
+  }
+}
+@media (min-width: 1001px) {
+  .author-list {
+    width: 70%;
+  }
+}
+.authors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* font-size: 1.5rem; */
+  color: #e0e0e0 !important;
+  /* margin-bottom: 0.5rem; */
+  font-weight: 400;
+  transition: none;
+  /* GPU acceleration */
+  transform: translateZ(0);
+  /* Prevent layout shifts */
+  contain: layout;
+}
+.author {
+  font-size: clamp(10px, 1vw, 75px);
+  color: rgb(63, 59, 77);
+  padding: 0.3vw 0.4vw;
+}
+
 .paper-title {
   font-family: "MyFont", Verdana, sans-serif;
   letter-spacing: 2px;
-  font-size: clamp(10px, 10vw, 50px);
+  font-size: clamp(30px, 3vw, 150px);
   margin: 32px;
   text-align: center;
   margin-top: 2%;
   word-break: break-word;
   white-space: normal;
 }
-
+.title-supp {
+  font-size: clamp(20px, 2vw, 100px);
+}
 /* 姓名和地址按钮 */
 .title-button {
   /* margin: 10px 3px; */
   padding: 1px 5px;
+  /* font-size: clamp(10px, 3vw, 150px); */
+  min-width: 5vw;
+  min-height: clamp(12px, 1.5vw, 150px);
 }
 
 /* 姓名和地址按钮光标悬浮 */
 .title-button:hover {
-  margin: 2px 3px;
+  margin: 2px 2px;
 }
 
-/* 引导材料按钮 */
+.con-cor {
+  font-family: Arial;
+  font-size: clamp(10px, 0.8vw, 50px);
+  margin: 8px 0px 6px 0px;
+  padding-top: 0.5vw;
+  text-align: center;
+}
+
+.title-button,
+.address-button,
 .guidance-button {
-  margin: 8px 5px;
-  box-shadow: #d8d8d8 1px 1px 1px 1px;
+  height: clamp(15px, 1.2vw, 100px);
 }
 
-/* 姓名属性 */
-.author {
-  font-size: clamp(10px, 8vw, 20px);
-  margin-left: 3px;
-  color: rgb(63, 59, 77);
+@media (max-width: 1000px) {
+  .guidance-button {
+    border-radius: 1.8vw;
+  }
+}
+@media (min-width: 1001px) {
+  .guidance-button {
+    border-radius: 0.8vw;
+  }
+}
+.guidance-button {
+  margin: 0.3vw 0.4vw;
+  min-width: 3vw;
+  min-height: 1.5vw;
+  box-shadow: #d8d8d8 1px 1px 1px 1px;
+  border-color: rgba(27, 24, 24, 0.4);
+  opacity: 0.9;
+  font-family: "MyFont", Verdana, sans-serif;
+  transition: opacity 0.3s var(--ease-out);
 }
 
 /* 姓名上标属性 */
@@ -240,28 +304,23 @@ const buttons = [
 
 /* 地址属性 */
 .address {
-  font-size: 18px;
   color: rgb(0, 0, 0);
+  margin-top: 0.5vw;
+  font-size: clamp(10px, 1.2vw, 80px);
+  font-family: Verdana, sans-serif;
 }
 
 /* 地址上标属性 */
 .address_sup {
   color: #606266;
   margin-right: 1px;
+  font-size: clamp(10px, 1vw, 60px);
 }
 
 /* 头像属性 */
 .el-avatar {
   margin-right: 6px;
   box-shadow: #b7b7b7 0px 0px 3px 1px;
-}
-
-/* 共一和通讯文字属性 */
-.con-cor {
-  font-family: Arial;
-  font-size: 14px;
-  margin: 10px 0px 5px 0px;
-  text-align: center;
 }
 
 /* 强调信息属性 */
@@ -275,7 +334,9 @@ const buttons = [
 
 /* 引导材料按钮文字属性 */
 .btn-text {
-  font-size: 18px;
+  /* font-size: clamp(5px, 0.8vw, 60px); */
+
+  font-size: clamp(10px, 0.8vw, 28px);
   color: #ffffff;
 }
 
@@ -368,9 +429,36 @@ a {
   transform: translateX(-50%);
   white-space: nowrap;
 }
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  /* Performance optimizations */
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  /* GPU acceleration */
+  transform-style: preserve-3d;
+  /* Reduce quality on slower devices */
+  image-rendering: optimizeSpeed;
+  image-rendering: -webkit-optimize-contrast;
+  /* Disable pointer events to prevent interference */
+  pointer-events: none;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background-color: rgba(0, 0, 0, 0.8); /* 半透明黑色覆盖 */
+  z-index: -1; /* 确保覆盖在视频上 */
+}
 </style>
-// 首页的视频 更新分辨率 视频添加instr 体现记忆 // 左右margin 减少 //
-作者行间距、间距 & 单位 // // 对应关系 prompt: 把盒子叠好
-把黄色圆形糖果/白色方形糖果放进盒子里，盖上盖子，并盖上对应的章 // （黄色
-蓝章）、 （白色 红章） // 视频开头 + 介绍 （跨本体、软体夹具、memory） //
-第一段完整 + 分屏 // agibot g1 daoshui // 动图大些

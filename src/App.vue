@@ -1,22 +1,19 @@
 <script>
-
-import Header from './components/Header.vue'
-import Main from './components/Main.vue'
-import Footer from './components/Footer.vue'
+import Header from "./components/Header.vue";
+import Main from "./components/Main.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
   components: {
     Header,
     Main,
     // Footer,
-  }
-}
-
+  },
+};
 </script>
 
 <template>
   <div>
-
     <el-container>
       <el-header>
         <Header />
@@ -65,14 +62,25 @@ li {
   font-size: 16px;
   line-height: 1.75rem;
 }
-
-.el-main {
+@media (max-width: 1000px) {
+  .el-main {
+    --el-main-padding: 30px;
+    padding: var(--el-main-padding);
+  }
+}
+@media (min-width: 1001px) {
+  .el-main {
+    --el-main-padding: 70px;
+    padding: var(--el-main-padding);
+  }
+}
+/* .el-main {
   --el-main-padding: 70px;
   padding: var(--el-main-padding);
-}
+} */
 
 code {
-  font-family: 'Consolas', monospace;
+  font-family: "Consolas", monospace;
   border-radius: 5px;
   padding: 2px 5px;
   background: #f2f2f2;
@@ -86,7 +94,7 @@ pre {
   line-height: 1.4rem;
 }
 
-pre:not(pre[id=bibtex]) {
+pre:not(pre[id="bibtex"]) {
   overflow-x: auto;
 }
 
@@ -104,7 +112,7 @@ blockquote {
   background: #f6f6f6;
 }
 
-blockquote>p {
+blockquote > p {
   margin-block-start: 0.5em;
   margin-block-end: 0.5em;
 }
@@ -121,7 +129,7 @@ a:hover {
   border-bottom: dotted;
 }
 
-p>img {
+p > img {
   width: 80%;
   display: block;
   margin: 0 auto;

@@ -44,7 +44,7 @@ const tableData = [
 
     <!-- 数据表格 -->
     <el-row justify="center">
-      <el-col :xs="16" :sm="16" :md="12" :lg="12" :xl="12">
+      <el-col :xs="20" :sm="20" :md="16" :lg="16" :xl="16">
         <el-card class="card">
           <el-tabs class="demo-tabs" model-value="Method B">
             <!-- <el-tab-pane label="Video Benchmark" name="Video Benchmark">
@@ -63,7 +63,7 @@ const tableData = [
             >
               <div class="image-wrapper">
                 <el-image
-                  style="width: 100%; height: 100%"
+                  style="width: 100%; height: auto"
                   :src="table_img[1]"
                   fit="contain"
                 ></el-image>
@@ -79,6 +79,7 @@ const tableData = [
                   style="width: 100%; height: 100%"
                   :src="table_img[2]"
                   fit="contain"
+                  class="responsive-image"
                 ></el-image>
               </div>
             </el-tab-pane>
@@ -118,12 +119,34 @@ const tableData = [
   margin-top: 20px;
 }
 .demo-tabs {
-  max-height: 350px;
+  /* max-height: 350px; */
+}
+.section-title {
+  font-size: clamp(20px, 1.4vw, 150px);
+}
+:deep(.el-tabs__item) {
+  font-family: "MyFont", sans-serif;
+  font-size: clamp(12px, 0.8vw, 40px);
+}
+
+@media (max-width: 1000px) {
+  .image-wrapper {
+    height: 24vw;
+  }
+}
+@media (min-width: 1001px) {
+  .image-wrapper {
+    height: 15vw;
+  }
 }
 .image-wrapper {
-  height: 300px;
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
+}
+.responsive-image {
+  width: 80%; /* 撑满容器宽度（即 80% 屏幕） */
+  height: auto; /* 自动保持图片比例 */
+  display: block; /* 去除底部空白 */
 }
 </style>

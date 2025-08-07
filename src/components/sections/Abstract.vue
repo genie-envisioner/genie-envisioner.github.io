@@ -9,33 +9,31 @@ import abstract from "../mds/abstract.mdx";
     <el-row justify="center">
       <el-col :xs="24" :sm="20" :md="16" :lg="16" :xl="16">
         <div style="textalign: justify">
-          <p style="font-size: clamp(0.8rem, 1.2vw, 1.2rem); line-height: 1.6">
+          <p style="font-size: clamp(10px, 1.1vw, 40px); line-height: 1.6">
             We introduce
             <strong style="color: #5db3e6">Genie Envisioner (GE)</strong>, a
-            <span style="color: #5db3e6">unified world-model framework</span>
-            that learns and evaluates robotic manipulation policies in a single
-            generative loop. The core,
-            <strong style="color: #5db3e6">GE-Base</strong>, is an
-            instruction-conditioned, multi-view video diffusion model trained on
-            over 1 million real-world episodes from the AgiBot-World-Beta
-            corpus, capturing scene dynamics and robot-environment interactions
-            in a structured latent space.
-            <strong style="color: #5db3e6">GE-Act</strong>, built in parallel
-            with the foundation model, incorporates a flow-matching action
-            expert to map these latents to predict 54-step torque trajectories
-            in 200 ms on commodity GPUs. It demonstrates strong task execution
-            capabilities on the in-domain <strong>AgiBot G1</strong> platform,
-            and generalizes to novel embodiments Franka and AgileX Cobot with
-            only 1 hour of teleoperated demonstrations.
-            <strong style="color: #5db3e6">GE-Sim</strong> provides a
-            closed-loop, action-conditioned neural simulator capable of
-            generating <strong>thousands of rollouts per hour</strong> for
-            efficient evaluation and policy training.
-            <strong style="color: #5db3e6">GE-Bench</strong> further complements
-            GE with standardized metrics for visual fidelity, physical
-            consistency, and instruction–action alignment. Together, these
-            components form a practical and scalable foundation for
-            general-purpose robotic manipulation.
+            <span style="color: #5db3e6">unified world foundation platform</span
+            >for robotic manipulation that integrates policy learning,
+            evaluation, and simulation within a single video-generative
+            framework. At its core,
+            <strong style="color: #5db3e6">GE-Base</strong> is a large-scale,
+            instruction-conditioned video diffusion model that captures the
+            spatial, temporal, and semantic dynamics of real-world robotic
+            interactions in a structured latent space. Built upon this
+            foundation, <strong style="color: #5db3e6">GE-Act</strong> maps
+            latent representations to executable action trajectories through a
+            lightweight, flow-matching decoder, enabling precise and
+            generalizable policy inference across diverse embodiments with
+            minimal supervision. To support scalable evaluation and training,
+            <strong style="color: #5db3e6">GE-Sim</strong> serves as an
+            action-conditioned neural simulator, producing high-fidelity
+            rollouts for closed-loop policy development. The platform is further
+            equipped with <strong style="color: #5db3e6">EWMBench</strong>, a
+            standardized benchmark suite measuring visual fidelity, physical
+            consistency, and instruction-action alignment. Together, these
+            components establish Genie Envisioner as a scalable and practical
+            foundation for instruction-driven, general-purpose embodied
+            intelligence.
           </p>
         </div>
         <div

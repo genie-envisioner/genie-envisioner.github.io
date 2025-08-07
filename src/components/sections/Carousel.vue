@@ -227,8 +227,10 @@ export default {
 </script>
 
 <template>
+  <el-divider />
+
   <el-row justify="center" class="section-title">
-    <h1>AgiBot-G1</h1>
+    <h1 class="section-title-h1">AgiBot-G1</h1>
   </el-row>
 
   <el-row justify="center" style="margin-right: 5%; margin-left: 5%">
@@ -269,7 +271,11 @@ export default {
               :key="index"
             >
               <div class="image-caption-wrapper">
-                <el-image :src="item.src" />
+                <el-image
+                  :src="item.src"
+                  class="responsive-image"
+                  fit="contain"
+                />
                 <div class="caption">{{ item.caption }}</div>
               </div>
             </swiper-slide>
@@ -303,7 +309,11 @@ export default {
             :key="index"
           >
             <div class="image-caption-wrapper">
-              <el-image :src="item.src" />
+              <el-image
+                :src="item.src"
+                class="responsive-image"
+                fit="contain"
+              />
               <div class="caption">{{ item.caption }}</div>
             </div>
           </swiper-slide>
@@ -341,7 +351,11 @@ export default {
             class="slide, slide_right"
           >
             <div class="image-caption-wrapper">
-              <el-image :src="item.src" />
+              <el-image
+                :src="item.src"
+                class="responsive-image"
+                fit="contain"
+              />
               <div class="caption">{{ item.caption }}</div>
             </div>
           </swiper-slide>
@@ -351,7 +365,7 @@ export default {
   </el-row>
 
   <el-row justify="center" class="section-title">
-    <h1>Cross Embodiment</h1>
+    <h1 class="section-title-h1">Cross Embodiment</h1>
   </el-row>
 
   <el-row justify="center" style="margin-right: 5%; margin-left: 5%">
@@ -393,7 +407,11 @@ export default {
               :key="index"
             >
               <div class="image-caption-wrapper">
-                <el-image :src="item.src" />
+                <el-image
+                  :src="item.src"
+                  class="responsive-image"
+                  fit="contain"
+                />
                 <div class="caption">{{ item.caption }}</div>
               </div>
             </swiper-slide>
@@ -427,7 +445,11 @@ export default {
             :key="index"
           >
             <div class="image-caption-wrapper">
-              <el-image :src="item.src" />
+              <el-image
+                :src="item.src"
+                class="responsive-image"
+                fit="contain"
+              />
               <div class="caption">{{ item.caption }}</div>
             </div>
           </swiper-slide>
@@ -464,7 +486,11 @@ export default {
             :key="item"
           >
             <div class="image-caption-wrapper">
-              <el-image :src="item.src" />
+              <el-image
+                :src="item.src"
+                class="responsive-image"
+                fit="contain"
+              />
               <div class="caption">{{ item.caption }}</div>
             </div>
           </swiper-slide>
@@ -507,7 +533,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   min-height: 30%;
-  max-width: 80%;
+  max-width: 100%;
   /* margin-left: 15%; */
   /* margin-right: 10px; */
   align-items: center;
@@ -523,7 +549,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   min-height: 30%;
-  max-width: 80%;
+  max-width: 100%;
   /* margin-right: 15%;
   margin-left: 10px; */
   align-items: center;
@@ -541,12 +567,17 @@ export default {
   border-radius: 8px;
   display: block;
 }
+.responsive-image {
+  width: 80%; /* 撑满容器宽度（即 80% 屏幕） */
+  height: auto; /* 自动保持图片比例 */
+  display: block; /* 去除底部空白 */
+}
 
 .caption {
   margin-top: 2px;
   margin-bottom: 3px;
 
-  font-size: clamp(2px, 0.9vw, 16px);
+  font-size: clamp(10px, 0.9vw, 120px);
   font-family: "Gill Sans", sans-serif;
   font-style: italic;
   color: #333;
@@ -557,7 +588,10 @@ export default {
   width: 100%;
 } */
 .section-title {
-  margin: 20px 0;
+  margin-top: 20px;
+}
+.section-title-h1 {
+  font-size: clamp(20px, 1.4vw, 150px);
 }
 .swiper-button-prev,
 .swiper-button-next {
@@ -566,13 +600,15 @@ export default {
 
 /* 控制按钮位置 */
 .swiper-button-prev {
-  left: 25px; /* 向内移动10px */
-  top: 45%;
+  /* left: 25px;  */
+  /* top: 45%; */
+  display: none !important;
 }
 
 .swiper-button-next {
-  right: 25px;
-  top: 45%;
+  /* right: 25px; */
+  /* top: 45%; */
+  display: none !important;
 }
 .label {
   color: #7e8481;
@@ -581,7 +617,7 @@ export default {
   text-align: center;
   margin-top: 5px; /* 可选 */
   margin-bottom: 10px;
-  font-size: clamp(12px, 1.4vw, 22px);
+  font-size: clamp(12px, 1vw, 120px);
 }
 
 .swiper-pagination {
