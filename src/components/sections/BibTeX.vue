@@ -3,12 +3,13 @@ export default {
   data() {
     return {
       bibtex: [
-        "@misc{liao2025genieenvisionerunifiedworld,",
+        "@article{liao2025geworldmodel,",
         "    title={Genie Envisioner: A Unified World Foundation Platform for Robotic Manipulation},",
         "    author={Yue Liao and Pengfei Zhou and Siyuan Huang and Donglin Yang and Shengcong Chen and Yuxin Jiang and Yue Hu and Jingbin Cai and Si Liu and Jianlan Luo and Liliang Chen and Shuicheng Yan and Maoqing Yao and Guanghui Ren},",
+        "    journal={arXiv preprint arXiv:2508.05635},",
         "    eprint={2508.05635}",
-        "    year={2025}",
         "    archivePrefix={arXiv},",
+        "    year={2025}",
         "    primaryClass={cs.RO},",
         "    url={https://arxiv.org/abs/2508.05635}",
         "}",
