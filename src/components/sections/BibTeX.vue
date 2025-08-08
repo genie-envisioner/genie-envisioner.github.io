@@ -3,7 +3,7 @@ export default {
   data() {
     return {
       bibtex: [
-        "@article{liao2025geworldmodel,",
+        "@article{ge2025,",
         "    title={Genie Envisioner: A Unified World Foundation Platform for Robotic Manipulation},",
         "    author={Yue Liao and Pengfei Zhou and Siyuan Huang and Donglin Yang and Shengcong Chen and Yuxin Jiang and Yue Hu and Jingbin Cai and Si Liu and Jianlan Luo and Liliang Chen and Shuicheng Yan and Maoqing Yao and Guanghui Ren},",
         "    journal={arXiv preprint arXiv:2508.05635},",
