@@ -12,8 +12,10 @@ import abstract from "../mds/abstract.mdx";
           <p style="font-size: clamp(10px, 1.1vw, 40px); line-height: 1.6">
             We introduce
             <strong style="color: #5db3e6">Genie Envisioner (GE)</strong>, a
-            <span style="color: #5db3e6">unified world foundation platform</span
-            >for robotic manipulation that integrates policy learning,
+            <span style="color: #5db3e6"
+              >unified world foundation platform</span
+            >
+            for robotic manipulation that integrates policy learning,
             evaluation, and simulation within a single video-generative
             framework. At its core,
             <strong style="color: #5db3e6">GE-Base</strong> is a large-scale,
@@ -36,15 +38,7 @@ import abstract from "../mds/abstract.mdx";
             intelligence.
           </p>
         </div>
-        <div
-          style="
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto;
-            max-width: 50vw;
-          "
-        >
+        <div class="banner-image">
           <el-image
             style="
               display: flex;
@@ -65,4 +59,22 @@ import abstract from "../mds/abstract.mdx";
 <style scoped>
 /* @media (max-width: 1000px) {
 } */
+@media (max-width: 1000px) {
+  .banner-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 80vw;
+  }
+}
+@media (min-width: 1001px) {
+  .banner-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 60vw;
+  }
+}
 </style>

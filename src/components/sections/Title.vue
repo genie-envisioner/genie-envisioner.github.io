@@ -64,7 +64,7 @@ const buttons = [
   {
     disabled: false,
     name: "Paper",
-    link: "https://arxiv.org/abs/25",
+    link: "https://arxiv.org/pdf/2508.05635",
     component: Document,
   },
   {
