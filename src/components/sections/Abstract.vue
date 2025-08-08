@@ -12,10 +12,8 @@ import abstract from "../mds/abstract.mdx";
           <p style="font-size: clamp(10px, 1.1vw, 40px); line-height: 1.6">
             We introduce
             <strong style="color: #5db3e6">Genie Envisioner (GE)</strong>, a
-            <span style="color: #5db3e6"
-              >unified world foundation platform</span
-            >
-            for robotic manipulation that integrates policy learning,
+            <span style="color: #5db3e6">unified world foundation platform</span
+            > for robotic manipulation that integrates policy learning,
             evaluation, and simulation within a single video-generative
             framework. At its core,
             <strong style="color: #5db3e6">GE-Base</strong> is a large-scale,
