@@ -42,10 +42,10 @@ export default {
       <el-col
         class="bibtex"
         :xs="24"
-        :sm="20"
-        :md="14"
-        :lg="12"
-        :xl="12"
+        :sm="24"
+        :md="16"
+        :lg="16"
+        :xl="16"
         @click="copyVal()"
       >
         <div
@@ -100,5 +100,9 @@ pre {
 pre code {
   font-size: 18px;
   background: #ffffff;
+}
+
+.section-title {
+  font-size: clamp(20px, 1.4vw, 150px);
 }
 </style>
