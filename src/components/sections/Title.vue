@@ -187,6 +187,9 @@ const buttons = [
             muted
             preload
             playsinline
+            autoplay
+            controlslist="nodownload noplaybackrate"
+            disablepictureinpicture
             style="
               max-width: 90%;
               height: auto;
