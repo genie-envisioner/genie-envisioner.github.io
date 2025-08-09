@@ -63,9 +63,10 @@ const tableData = [
             >
               <div class="image-wrapper">
                 <el-image
-                  style="width: 100%; height: auto"
                   :src="table_img[1]"
                   fit="contain"
+                  style="width: 100%; height: 100%"
+                  class="responsive-image"
                 ></el-image>
               </div>
             </el-tab-pane>
@@ -93,6 +94,7 @@ const tableData = [
                   style="width: 100%; height: 100%"
                   :src="table_img[3]"
                   fit="contain"
+                  class="responsive-image"
                 ></el-image>
               </div>
 
