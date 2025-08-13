@@ -19,48 +19,48 @@ export default {
       // 选择要轮播的照片
       genie_manipulation_image_paths: [
         {
-          src: "./carousel/manipulation/wipe-cut-o.gif",
+          src: "./carousel/manipulation/wipe-cut.webp",
           caption:
             "Use the sponge held in the right arm to wipe the stains clean",
         },
         {
-          src: "./carousel/manipulation/sandwich-w-cut-o.gif",
+          src: "./carousel/manipulation/sandwich-w-cut.webp",
           caption: "Make a sandwich",
         },
         {
-          src: "./carousel/manipulation/conveyer-w-cut-o.gif",
+          src: "./carousel/manipulation/conveyer-w-cut.webp",
           caption: "Pack washing detergent from the conveyor belt",
         },
         {
-          src: "./carousel/manipulation/microwave-cut-o.gif",
+          src: "./carousel/manipulation/microwave-cut.webp",
           caption:
             "Close the open microwave door on the table with the left arm",
         },
       ],
       cross_manipulation_image_paths: [
         {
-          src: "./carousel/manipulation/fold-stamp.gif",
+          src: "./carousel/manipulation/fold-stamp.webm",
           caption:
             "Fold a box, place the candy inside, seal and apply the stamp.",
         },
         {
-          src: "./carousel/manipulation/rollout1.gif",
+          src: "./carousel/manipulation/rollout1.webm",
           caption: "Fold the grey cloth",
         },
         {
-          src: "./carousel/manipulation/rollout2.gif",
+          src: "./carousel/manipulation/rollout2.webm",
           caption: "Fold the grey cloth",
         },
         {
-          src: "./carousel/manipulation/sl_cloth_pink.gif",
+          src: "./carousel/manipulation/sl_cloth_pink.webp",
           caption: "Fold the pink cloth",
         },
         {
-          src: "./carousel/manipulation/sl_box_2.gif",
+          src: "./carousel/manipulation/sl_box_2.webp",
           caption: "Fold the box",
         },
         {
-          src: "./carousel/manipulation/franka_cloth.gif",
+          src: "./carousel/manipulation/franka_cloth.webp",
           caption: "Fold the cloth",
         },
       ],
@@ -264,7 +264,7 @@ export default {
               type: 'bullets',
             }"
             :autoplay="{
-              delay: 2400,
+              delay: 3000,
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
             }"
@@ -302,7 +302,7 @@ export default {
             type: 'bullets',
           }"
           :autoplay="{
-            delay: 2400,
+            delay: 3000,
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
           }"
@@ -345,7 +345,7 @@ export default {
           @swiper="onG1RightSlideInit"
           @slideChange="onG1RightSlideChange"
           :autoplay="{
-            delay: 2400,
+            delay: 5000,
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
           }"
@@ -372,7 +372,20 @@ export default {
   <el-row justify="center" class="section-title">
     <h1 class="section-title-h1">Cross Embodiment</h1>
   </el-row>
-
+  <el-row justify="center" class="section-title">
+    <div class="slider-hint" role="note" aria-live="polite">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+        <path
+          d="M3 12h14m0 0l-4-4m4 4l-4 4"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      </svg>
+      <em>Drag the slider to see more images</em>
+    </div>
+  </el-row>
   <el-row justify="center" style="margin-right: 5%; margin-left: 5%">
     <el-col
       :xs="24"
@@ -399,7 +412,7 @@ export default {
               type: 'bullets',
             }"
             :autoplay="{
-              delay: 2400,
+              delay: 3000,
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
             }"
@@ -438,7 +451,7 @@ export default {
           @swiper="onCrossLeftSlideInit"
           @slideChange="onCrossLeftSlideChange"
           :autoplay="{
-            delay: 2400,
+            delay: 3000,
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
           }"
@@ -480,7 +493,7 @@ export default {
             type: 'bullets',
           }"
           :autoplay="{
-            delay: 10000,
+            delay: 100000,
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
           }"
@@ -491,11 +504,23 @@ export default {
             :key="item"
           >
             <div class="image-caption-wrapper">
-              <el-image
-                :src="item.src"
-                class="responsive-image"
-                fit="contain"
-              />
+              <template v-if="item.src.endsWith('.webm')">
+                <video
+                  :src="item.src"
+                  class="responsive-image"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                ></video>
+              </template>
+              <template v-else>
+                <el-image
+                  :src="item.src"
+                  class="responsive-image"
+                  fit="contain"
+                />
+              </template>
               <div class="caption">{{ item.caption }}</div>
             </div>
           </swiper-slide>
@@ -559,7 +584,38 @@ export default {
   margin-left: 10px; */
   align-items: center;
 }
+.slider-hint {
+  display: inline-flex;
+  align-items: center;
+  max-width: 60vw;
+  gap: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 999px;
+  background: #f5f7fb;
+  color: #6078c0;
+  font-weight: 500;
+  font-size: clamp(13px, 1.4vw, 20px); /* 响应式字体大小 */
+  line-height: 1.4;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Microsoft Yahei", Arial;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  user-select: none;
+  animation: nudge 1.6s ease-in-out infinite;
+}
 
+.slider-hint em {
+  font-style: normal;
+  opacity: 0.7;
+  margin-left: 0.25rem;
+}
+@keyframes nudge {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(6px);
+  }
+}
 .image-caption-wrapper {
   display: flex;
   flex-direction: column;
@@ -624,7 +680,9 @@ export default {
   margin-bottom: 10px;
   font-size: clamp(12px, 1vw, 120px);
 }
-
+.section-title .slider-hint em {
+  font-size: clamp(15px, 1vw, 100px);
+}
 .swiper-pagination {
   margin-top: 14px;
   position: relative;
