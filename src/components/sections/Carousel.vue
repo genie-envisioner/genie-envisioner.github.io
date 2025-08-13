@@ -39,7 +39,7 @@ export default {
       ],
       cross_manipulation_image_paths: [
         {
-          src: "./manipulation/fold-stamp.gif",
+          src: "./carousel/manipulation/fold-stamp.gif",
           caption:
             "Fold a box, place the candy inside, seal and apply the stamp.",
         },
