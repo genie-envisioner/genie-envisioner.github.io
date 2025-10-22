@@ -15,7 +15,7 @@ const title = "Genie Envisioner";
 
 const title_color = "#53abe1";
 
-const title_supp = "A Unified World Foundation Model for Robotic Manipulation";
+const title_supp = "A Unified World Foundation Platform for Robotic Manipulation";
 
 const title_supp_color = "#75579b";
 
