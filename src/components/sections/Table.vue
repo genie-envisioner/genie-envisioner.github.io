@@ -3,8 +3,8 @@
 const table_img = [
   "./table/Exp-BenchRank.png",
   "./table/Exp-SR-E2E.png",
-  "./table/Exp-AgileX-SR-E2E.png",
-  "./table/Exp-Franka-SR-E2E.png",
+  "./table/Exp-Cross.jpg",
+  "./table/Exp-BenchRank.png",
 ];
 const tableData = [
   {
@@ -44,7 +44,7 @@ const tableData = [
 
     <!-- 数据表格 -->
     <el-row justify="center">
-      <el-col :xs="24" :sm="24" :md="16" :lg="16" :xl="16">
+      <el-col :xs="24" :sm="24" :md="20" :lg="20" :xl="16">
         <el-card class="card">
           <el-tabs class="demo-tabs" model-value="Method B">
             <!-- <el-tab-pane label="Video Benchmark" name="Video Benchmark">
@@ -72,7 +72,7 @@ const tableData = [
             </el-tab-pane>
 
             <el-tab-pane
-              label="Manipulation Performance on AgileX"
+              label="Manipulation Performance on Various Embodiments"
               name="Method C"
             >
               <div class="image-wrapper">
@@ -85,10 +85,7 @@ const tableData = [
               </div>
             </el-tab-pane>
 
-            <el-tab-pane
-              label="Manipulation Performance on Dual Franka"
-              name="Method D"
-            >
+            <el-tab-pane label="Video Benchmark" name="Method D">
               <div class="image-wrapper">
                 <el-image
                   style="width: 100%; height: 100%"

@@ -47,7 +47,6 @@ export default {
   <Carousel />
   <!-- <Markdown /> -->
   <!-- <Latex /> -->
-  <Table />
   <!-- <Collapse /> -->
   <!-- <Echart /> -->
   <!-- <Model3D /> -->
@@ -55,7 +54,8 @@ export default {
   <!-- <SeletionForComparison /> -->
   <!-- <ImageSliderInner /> -->
   <!-- <ImageSlider /> -->
-  <!-- <ImageSelector /> -->
+  <ImageSelector />
+  <Table />
   <BibTeX />
   <!-- <Comment/> -->
 </template>

@@ -235,7 +235,7 @@ export default {
   <el-divider />
 
   <el-row justify="center" class="section-title">
-    <h1 class="section-title-h1">AgiBot-G1</h1>
+    <h1 class="section-title-h1">GE-Act on AgiBot-G1</h1>
   </el-row>
 
   <el-row justify="center" style="margin-right: 5%; margin-left: 5%">
@@ -370,7 +370,7 @@ export default {
   </el-row>
 
   <el-row justify="center" class="section-title">
-    <h1 class="section-title-h1">Cross Embodiment</h1>
+    <h1 class="section-title-h1">GE-Act on Various Embodiment</h1>
   </el-row>
   <el-row justify="center" class="section-title">
     <div class="slider-hint" role="note" aria-live="polite">

@@ -40,8 +40,8 @@ export default {
         class="bibtex"
         :xs="24"
         :sm="24"
-        :md="16"
-        :lg="16"
+        :md="20"
+        :lg="20"
         :xl="16"
         @click="copyVal()"
       >
