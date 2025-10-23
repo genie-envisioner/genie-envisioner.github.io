@@ -189,15 +189,11 @@ const handleActionChange = (sectionIndex, action) => {
       </el-col>
     </el-row>
 
-    <div class="card">
-      <el-row justify="center" class="subsection-name">
-        <span>Simulation from Original Actions </span>
-      </el-row>
-      <el-row
-        justify="center"
-        :gutter="20"
-        style="margin-top: 2%; margin-right: 3%; margin-left: 3%"
-      >
+    <el-row justify="center" class="subsection-name">
+      <span>Simulation from Original Actions </span>
+    </el-row>
+    <div class="card" style="margin-top: 2%">
+      <el-row justify="center" :gutter="20">
         <el-col
           :xs="24"
           :sm="24"
