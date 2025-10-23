@@ -2,7 +2,7 @@
 // 表格数据
 const table_img = [
   "./table/Exp-BenchRank.png",
-  "./table/Exp-SR-E2E.png",
+  "./table/Exp-SR-E2E.jpg",
   "./table/Exp-Cross.jpg",
   "./table/Exp-BenchRank.png",
 ];
