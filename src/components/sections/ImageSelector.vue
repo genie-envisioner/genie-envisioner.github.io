@@ -40,7 +40,12 @@ const ori_traj_videos = [
 const currentVideos = ref(secTrajVideoPaths.map((section) => section[0]));
 const selectedTarget = ref(Array(secTrajVideoPaths.length).fill("left")); // 默认 target
 const selectedAction = ref(Array(secTrajVideoPaths.length).fill("up")); // 默认 action
-
+const actionsList = [
+  "up",
+  "forward-back",
+  "forward-closegripper-back",
+  "random",
+];
 // Target -> Action 映射
 const targetActionsMap = {
   left: ["up", "forward-back"],
@@ -55,20 +60,24 @@ const actionIndexMap = {
   both: { random: 3 },
 };
 
-const handleTargetChange = (sectionIndex, target) => {
-  selectedTarget.value[sectionIndex] = target;
-  // 默认选择第一个 action
-  selectedAction.value[sectionIndex] = targetActionsMap[target][0];
-  const action = selectedAction.value[sectionIndex];
-  const videoIndex = actionIndexMap[target][action];
-  currentVideos.value[sectionIndex] =
-    secTrajVideoPaths[sectionIndex][videoIndex];
-};
+// const handleTargetChange = (sectionIndex, target) => {
+//   selectedTarget.value[sectionIndex] = target;
+//   // 默认选择第一个 action
+//   selectedAction.value[sectionIndex] = targetActionsMap[target][0];
+//   const action = selectedAction.value[sectionIndex];
+//   const videoIndex = actionIndexMap[target][action];
+//   currentVideos.value[sectionIndex] =
+//     secTrajVideoPaths[sectionIndex][videoIndex];
+// };
 
-const handleActionChange = (sectionIndex, action) => {
-  selectedAction.value[sectionIndex] = action;
-  const target = selectedTarget.value[sectionIndex];
-  const videoIndex = actionIndexMap[target][action];
+// const handleActionChange = (sectionIndex, action) => {
+//   selectedAction.value[sectionIndex] = action;
+//   const target = selectedTarget.value[sectionIndex];
+//   const videoIndex = actionIndexMap[target][action];
+//   currentVideos.value[sectionIndex] =
+//     secTrajVideoPaths[sectionIndex][videoIndex];
+// };
+const handleVideoChange = (sectionIndex, videoIndex) => {
   currentVideos.value[sectionIndex] =
     secTrajVideoPaths[sectionIndex][videoIndex];
 };
@@ -87,7 +96,7 @@ const handleActionChange = (sectionIndex, action) => {
         <div class="section-card">
           <h3 class="section-title">Scene {{ String.fromCharCode(65 + i) }}</h3>
 
-          <div class="button-line">
+          <!-- <div class="button-line">
             <div class="button-group">
               <div class="line-label">Target:</div>
               <el-button
@@ -102,10 +111,10 @@ const handleActionChange = (sectionIndex, action) => {
                 {{ target }}
               </el-button>
             </div>
-          </div>
+          </div> -->
 
           <!-- 第二行 Action -->
-          <div class="button-line">
+          <!-- <div class="button-line">
             <div class="button-group">
               <span class="line-label">Action:</span>
               <el-button
@@ -121,8 +130,21 @@ const handleActionChange = (sectionIndex, action) => {
                 {{ action }}
               </el-button>
             </div>
+          </div> -->
+          <div class="button-group">
+            <el-button
+              v-for="(video, j) in section"
+              :key="j"
+              size="medium"
+              type="primary"
+              round
+              plain
+              @click="handleVideoChange(i, j)"
+            >
+              <!-- Action {{ j + 1 }} -->
+              {{ actionsList[j] }}
+            </el-button>
           </div>
-
           <!-- 视频展示 -->
           <video
             :src="currentVideos[i]"
@@ -309,7 +331,8 @@ const handleActionChange = (sectionIndex, action) => {
   gap: 8px;
   margin-left: 3%;
   margin-bottom: 10px;
-  justify-content: flex-start;
+  /* justify-content: flex-start; */
+  justify-content: center;
 }
 .custom-btn {
   font-size: clamp(12px, 1.05vw, 120px);
