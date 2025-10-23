@@ -135,9 +135,12 @@ const handleActionChange = (sectionIndex, action) => {
         </div>
       </el-col>
     </el-row>
-
+    <el-row justify="center" class="subsection-name">
+      <span>Simulation from successful and failed actions </span>
+    </el-row>
     <el-row
       justify="center"
+      :gutter="20"
       style="margin-top: 2%; margin-right: 3%; margin-left: 3%"
     >
       <el-col
@@ -150,7 +153,7 @@ const handleActionChange = (sectionIndex, action) => {
       >
         <div class="section-card">
           <div class="left_video">
-            <span class="label">Failed Case</span>
+            <span class="label">Trajectory of failed Actions</span>
             <video
               :src="failed_and_success_videos[0]"
               class="demo-video"
@@ -172,7 +175,7 @@ const handleActionChange = (sectionIndex, action) => {
       >
         <div class="section-card">
           <div class="right_video">
-            <span class="label">Success Case</span>
+            <span class="label"> Trajectory of Success Actions</span>
             <video
               :src="failed_and_success_videos[1]"
               class="demo-video"
@@ -185,52 +188,56 @@ const handleActionChange = (sectionIndex, action) => {
         </div>
       </el-col>
     </el-row>
-    <el-row justify="center" class="subsection-name">
-      <span>Original Trajectory</span>
-    </el-row>
-    <el-row
-      justify="center"
-      style="margin-top: 2%; margin-right: 3%; margin-left: 3%"
-    >
-      <el-col
-        :xs="24"
-        :sm="12"
-        :md="12"
-        :lg="12"
-        :xl="12"
-        style="display: flex; justify-content: center"
+
+    <div class="card">
+      <el-row justify="center" class="subsection-name">
+        <span>Simulation from Original Actions </span>
+      </el-row>
+      <el-row
+        justify="center"
+        :gutter="20"
+        style="margin-top: 2%; margin-right: 3%; margin-left: 3%"
       >
-        <div class="left_video">
-          <video
-            :src="ori_traj_videos[0]"
-            class="demo-video"
-            controls
-            autoplay
-            muted
-            loop
-          ></video>
-        </div>
-      </el-col>
-      <el-col
-        :xs="24"
-        :sm="12"
-        :md="12"
-        :lg="12"
-        :xl="12"
-        style="display: flex; justify-content: center"
-      >
-        <div class="right_video">
-          <video
-            :src="ori_traj_videos[1]"
-            class="demo-video"
-            controls
-            autoplay
-            muted
-            loop
-          ></video>
-        </div>
-      </el-col>
-    </el-row>
+        <el-col
+          :xs="24"
+          :sm="24"
+          :md="12"
+          :lg="12"
+          :xl="12"
+          style="display: flex; justify-content: center"
+        >
+          <div class="left_video">
+            <video
+              :src="ori_traj_videos[0]"
+              class="demo-video"
+              controls
+              autoplay
+              muted
+              loop
+            ></video>
+          </div>
+        </el-col>
+        <el-col
+          :xs="24"
+          :sm="24"
+          :md="12"
+          :lg="12"
+          :xl="12"
+          style="display: flex; justify-content: center"
+        >
+          <div class="right_video">
+            <video
+              :src="ori_traj_videos[1]"
+              class="demo-video"
+              controls
+              autoplay
+              muted
+              loop
+            ></video>
+          </div>
+        </el-col>
+      </el-row>
+    </div>
   </div>
 </template>
 
@@ -244,6 +251,17 @@ const handleActionChange = (sectionIndex, action) => {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   max-width: 80%;
   margin: 1% auto;
+}
+.card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  /* margin: 1% auto; */
+  margin: 0 auto; /* ✅ 水平居中 */
+  max-width: 83%; /* ✅ 控制总宽度 */
+  display: block; /* 避免 flex 影响 */
 }
 .left_video {
   display: flex;
